@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, type Page } from "@playwright/test";
 
 const BASE = "http://localhost:3000";
 
@@ -36,21 +36,22 @@ const serviceIds = [
   "electrotherapy",
 ];
 
-async function captureWhatsAppUrl(page: any) {
+async function captureWhatsAppUrl(page: Page) {
   await page.evaluate(() => {
-    (window as any)._capturedUrls = [];
+    const w = window as unknown as Record<string, unknown>;
+    w._capturedUrls = [];
     const orig = window.open;
-    (window as any)._origOpen = orig;
-    window.open = function (url: string, target?: string, features?: string) {
-      (window as any)._capturedUrls.push(url);
-      return orig.call(window, url, target, features);
+    w._origOpen = orig;
+    window.open = function (url?: string | URL, target?: string, features?: string) {
+      (w._capturedUrls as (string | URL | undefined)[]).push(url);
+      return orig?.call(window, url, target, features);
     };
   });
   return {
-    getUrls: () => page.evaluate(() => (window as any)._capturedUrls || []),
+    getUrls: () => page.evaluate(() => (window as unknown as Record<string, unknown>)._capturedUrls as (string | URL | undefined)[]),
     restore: () =>
       page.evaluate(() => {
-        window.open = (window as any)._origOpen;
+        window.open = (window as unknown as Record<string, unknown>)._origOpen as typeof window.open;
       }),
   };
 }

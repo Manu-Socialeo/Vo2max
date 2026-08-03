@@ -132,7 +132,14 @@ export default function About() {
                 ))}
               </ul>
             </div>
-            <div className="aspect-[4/3] rounded-[20px] bg-muted" />
+            <div className="overflow-hidden rounded-[20px]">
+              <img
+                src="/images/about-img.jpg"
+                alt="VO2 Max Physiotherapy Rehabilitation & Fitness Center in Mysuru"
+                className="aspect-[4/3] w-full object-cover"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -178,7 +185,14 @@ export default function About() {
                 href={`/team/${doctor.id}`}
                 className="group rounded-[20px] border border-border/50 bg-white p-8 transition-all hover:shadow-lg"
               >
-                <div className="mb-5 aspect-square w-full max-w-[200px] rounded-[20px] bg-muted" />
+                <div className="mb-5 aspect-square w-full max-w-[200px] overflow-hidden rounded-[20px]">
+                  <img
+                    src={doctor.image}
+                    alt={doctor.name}
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
                 <h3 className="group-hover:text-primary">{doctor.name}</h3>
                 <p className="mt-1 text-sm font-medium text-primary">
                   {doctor.title}

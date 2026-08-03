@@ -1,6 +1,20 @@
 import { test, expect } from "@playwright/test";
+import type { Page } from "@playwright/test";
 
 const BASE = "http://localhost:3000";
+
+async function gotoPage(page: Page, path: string) {
+  const url = `${BASE}${path}`;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
+      return;
+    } catch {
+      if (attempt === 3) throw new Error(`Failed to navigate to ${url}`);
+      await page.waitForTimeout(1000);
+    }
+  }
+}
 
 const pages = [
   { path: "/", title: "VO2 Max" },
@@ -26,7 +40,7 @@ const pages = [
 test.describe("SEO & Metadata", () => {
   for (const page of pages) {
     test(`${page.path} has valid title and meta description`, async ({ page: p }) => {
-      await p.goto(`${BASE}${page.path}`);
+      await gotoPage(p, page.path);
       const title = await p.title();
       expect(title).toBeTruthy();
       expect(title.length).toBeGreaterThan(0);
@@ -40,7 +54,7 @@ test.describe("SEO & Metadata", () => {
 
   test("every page has JSON-LD structured data", async ({ page: p }) => {
     for (const page of pages) {
-      await p.goto(`${BASE}${page.path}`);
+      await gotoPage(p, page.path);
       const scripts = p.locator('script[type="application/ld+json"]');
       const count = await scripts.count();
       expect(count).toBeGreaterThanOrEqual(1);
@@ -49,7 +63,7 @@ test.describe("SEO & Metadata", () => {
 
   test("every page has canonical URL", async ({ page: p }) => {
     for (const page of pages) {
-      await p.goto(`${BASE}${page.path}`);
+      await gotoPage(p, page.path);
       const canonical = p.locator('link[rel="canonical"]');
       await expect(canonical).toHaveCount(1);
       const href = await canonical.getAttribute("href");

@@ -64,7 +64,7 @@ export const doctors: Doctor[] = [
       "Manual Therapy",
       "Exercise Therapy",
     ],
-    image: "/images/team/dr-pradeep.jpg",
+    image: "/images/team/dr-pradeep.webp",
   },
   {
     id: "pinakin",
@@ -80,7 +80,7 @@ export const doctors: Doctor[] = [
       "Fitness & Wellness Training",
       "Posture Correction",
     ],
-    image: "/images/team/dr-pinakin.jpg",
+    image: "/images/team/dr-pinakin.webp",
   },
 ];
 

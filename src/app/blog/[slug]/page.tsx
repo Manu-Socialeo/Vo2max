@@ -130,13 +130,11 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="mx-auto max-w-3xl">
             <div
               className="aspect-[16/9] rounded-[20px] mb-12"
-              style={{ background: post.image }}
+              style={{ backgroundImage: `url("${post.image}")`, backgroundSize: "cover", backgroundPosition: "center" }}
               role="img"
               aria-label={post.imageAlt}
             />
-            <div className="prose-custom leading-relaxed text-foreground/70">
-              <p className="mt-4 leading-relaxed text-foreground/70">{formattedContent}</p>
-            </div>
+            <div className="prose-custom leading-relaxed text-foreground/70" dangerouslySetInnerHTML={{ __html: formattedContent }} />
             <div className="mt-8">
               <Link href={"/services/" + slug} className="text-primary underline hover:text-[#0046E0]">Learn more about our {slug.replace(/-/g, " ")} service</Link>
             </div>

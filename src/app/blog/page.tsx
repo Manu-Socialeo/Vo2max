@@ -57,7 +57,7 @@ export default function BlogPage() {
             {blogPosts.map((post) => (
               <Link key={post.id} href={`/blog/${post.id}`} className="group block">
                 <div className="flex h-full flex-col rounded-[20px] bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                  <div className="aspect-[16/9] rounded-[12px] bg-gradient-to-br" style={{ background: post.image }} aria-hidden="true">
+                  <div className="aspect-[16/9] rounded-[12px]" style={{ backgroundImage: `url("${post.image}")`, backgroundSize: "cover", backgroundPosition: "center" }} aria-hidden="true">
                     <span className="sr-only">{post.imageAlt}</span>
                   </div>
                   <div className="mt-5 flex items-center gap-4 text-xs text-foreground/50">

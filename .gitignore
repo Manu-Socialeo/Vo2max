@@ -47,3 +47,8 @@ next-env.d.ts
 
 # Local temp files
 temp/
+
+# Test artifacts
+test-results/
+playwright-report/
+*.log

@@ -84,7 +84,13 @@ export default async function TeamMemberPage({ params }: Props) {
               <p className="mt-2 text-lg font-medium text-white/80">{doctor.title}</p>
               <p className="mt-2 text-sm text-white/50">{doctor.qualifications} &middot; {doctor.experience}</p>
             </div>
-            <div className="aspect-[4/3] rounded-[20px] bg-white/10" />
+            <div className="aspect-[4/3] overflow-hidden rounded-[20px] bg-white/10">
+              <img
+                src={doctor.image}
+                alt={doctor.name}
+                className="h-full w-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>

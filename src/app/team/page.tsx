@@ -27,7 +27,13 @@ export default function Team() {
                 key={doctor.id}
                 className="rounded-[20px] border border-border/50 bg-white p-5 transition-all hover:shadow-lg"
               >
-                <div className="mb-4 aspect-square w-full max-w-[200px] rounded-[20px] bg-muted" />
+                <div className="mb-4 aspect-square w-full max-w-[200px] overflow-hidden rounded-[20px] bg-muted">
+                  <img
+                    src={doctor.image}
+                    alt={doctor.name}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
                 <h3 className="text-base">{doctor.name}</h3>
                 <p className="mt-1 text-xs font-medium text-primary">
                   {doctor.title}

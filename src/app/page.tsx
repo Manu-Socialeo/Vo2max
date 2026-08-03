@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, Check, Play } from "lucide-react";
-import { services, clinic } from "@/lib/clinic";
+import { ArrowRight, Check, Play, Star } from "lucide-react";
+import { services, clinic, testimonials } from "@/lib/clinic";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import HeroCarousel from "@/components/HeroCarousel";
 
@@ -14,6 +14,37 @@ const serviceIconMap: Record<string, string> = {
 };
 
 const previewServices = services.slice(0, 6);
+
+const previewPlans = [
+  {
+    name: "Consultation",
+    subtitle: "Initial Assessment",
+    features: [
+      "Initial consultation & diagnosis",
+      "Follow-up session",
+      "Progress assessment",
+    ],
+  },
+  {
+    name: "Treatment Package",
+    subtitle: "Recovery Program",
+    features: [
+      "4-session discounted package",
+      "6-session extended rehab",
+      "8-session recovery plan",
+    ],
+    popular: true,
+  },
+  {
+    name: "Fitness Program",
+    subtitle: "Wellness & Training",
+    features: [
+      "Monthly membership",
+      "Personal training",
+      "Diet & lifestyle guidance",
+    ],
+  },
+];
 
 export default function Home() {
   return (
@@ -215,6 +246,106 @@ export default function Home() {
                 </span>
               </Link>
             ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 rounded-[30px] bg-[#0052FF] px-6 py-[18px] text-[12px] font-medium uppercase tracking-[2px] text-white transition-all hover:bg-[#0046E0]"
+            >
+              View all services
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ====================== PRICING ====================== */}
+      <section className="py-[100px]">
+        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+          <div className="mb-14 text-center">
+            <span className="section-subtitle">Pricing & plans</span>
+            <h2 className="mt-4">Affordable care, transparent pricing</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {previewPlans.map((plan) => (
+              <div
+                key={plan.name}
+                className={`relative rounded-[20px] bg-[#EEF1E4] p-8 ${
+                  plan.popular ? "ring-2 ring-primary" : ""
+                }`}
+              >
+                {plan.popular && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-[10px] font-medium uppercase tracking-[2px] text-white">
+                    Most Popular
+                  </span>
+                )}
+                <h3 className="text-[20px] font-medium text-[#343434]">{plan.name}</h3>
+                <p className="mt-1 text-sm text-[#343434]/60">{plan.subtitle}</p>
+                <p className="mt-4 text-xs text-[#343434]/50">Available on request</p>
+                <hr className="my-6 border-[#343434]/10" />
+                <ul className="space-y-4">
+                  {plan.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-3">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                      <span className="text-sm font-medium text-[#343434]/80">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/contact"
+                  className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-[30px] bg-[#0052FF] px-6 py-[14px] text-[12px] font-medium uppercase tracking-[2px] text-white transition-all hover:bg-[#0046E0]"
+                >
+                  Contact for pricing
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ====================== TESTIMONIALS ====================== */}
+      <section className="bg-[#EEF1E4] py-[100px]">
+        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+          <div className="mb-14 text-center">
+            <span className="section-subtitle">Patient stories</span>
+            <h2 className="mt-4">What our patients say</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {testimonials.slice(0, 3).map((t) => (
+              <div key={t.id} className="rounded-[20px] bg-white p-8">
+                <div className="flex gap-1">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star
+                      key={i}
+                      className={`h-4 w-4 ${
+                        i < t.rating ? "fill-primary text-primary" : "text-border"
+                      }`}
+                    />
+                  ))}
+                </div>
+                <p className="mt-4 text-[14px] leading-relaxed text-[#343434]/80">
+                  &ldquo;{t.text}&rdquo;
+                </p>
+                <div className="mt-6 flex items-center gap-3 border-t border-[#343434]/10 pt-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#EEF1E4] text-sm font-medium text-primary">
+                    {t.name.charAt(0)}
+                  </div>
+                  <p className="text-sm font-medium text-[#343434]">{t.name}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Link
+              href="/testimonials"
+              className="inline-flex items-center gap-2 rounded-[30px] bg-[#0052FF] px-6 py-[14px] text-[12px] font-medium uppercase tracking-[2px] text-white transition-all hover:bg-[#0046E0]"
+            >
+              View all testimonials
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

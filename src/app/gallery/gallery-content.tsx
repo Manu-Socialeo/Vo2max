@@ -1,22 +1,31 @@
 "use client";
 
 import { useState } from "react";
-import { ImageIcon, Camera } from "lucide-react";
+import { Camera } from "lucide-react";
 
 const categories = ["All", "Clinic", "Equipment", "Team", "Events"];
 
-const galleryPlaceholders = Array.from({ length: 12 }).map((_, i) => ({
-  id: i + 1,
-  category: categories[((i % 4) + 1)],
-  label: `${categories[((i % 4) + 1)]} Photo ${Math.floor(i / 4) + 1}`,
-}));
+const galleryItems = [
+  { id: 1, src: "/images/gallery/gallery-1.jpg", category: "Clinic", label: "Physiotherapy treatment room" },
+  { id: 2, src: "/images/gallery/gallery-5.jpg", category: "Equipment", label: "Modern exercise equipment" },
+  { id: 3, src: "/images/gallery/gallery-10.jpg", category: "Team", label: "Our team of therapists" },
+  { id: 4, src: "/images/gallery/gallery-12.jpg", category: "Events", label: "Health awareness workshop" },
+  { id: 5, src: "/images/gallery/gallery-2.jpg", category: "Clinic", label: "Shockwave therapy session" },
+  { id: 6, src: "/images/gallery/gallery-6.jpg", category: "Equipment", label: "Strength training zone" },
+  { id: 7, src: "/images/gallery/gallery-11.jpg", category: "Team", label: "Rehabilitation specialists" },
+  { id: 8, src: "/images/gallery/gallery-15.jpg", category: "Events", label: "Fitness seminar & talks" },
+  { id: 9, src: "/images/gallery/gallery-4.jpg", category: "Clinic", label: "Patient assessment room" },
+  { id: 10, src: "/images/gallery/gallery-9.jpg", category: "Equipment", label: "Free weights & plates" },
+  { id: 11, src: "/images/gallery/gallery-14.jpg", category: "Team", label: "Physiotherapy staff" },
+  { id: 12, src: "/images/gallery/gallery-16.jpg", category: "Events", label: "Community wellness events" },
+];
 
 export default function GalleryContent() {
   const [active, setActive] = useState("All");
 
   const filtered = active === "All"
-    ? galleryPlaceholders
-    : galleryPlaceholders.filter((g) => g.category === active);
+    ? galleryItems
+    : galleryItems.filter((g) => g.category === active);
 
   return (
     <>
@@ -28,7 +37,7 @@ export default function GalleryContent() {
             Our clinic in photos
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-[17px] text-foreground/70">
-            Take a visual tour of our facilities, equipment, and team. Photos pending verification.
+            Take a visual tour of our facilities, equipment, and team.
           </p>
         </div>
       </section>
@@ -53,11 +62,6 @@ export default function GalleryContent() {
             ))}
           </div>
 
-          {/* Note */}
-          <p className="mb-8 text-center text-xs text-foreground/50">
-            Photos pending verification
-          </p>
-
           {/* Grid */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((item) => (
@@ -65,10 +69,11 @@ export default function GalleryContent() {
                 key={item.id}
                 className="group relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[20px] bg-muted"
               >
-                <div className="text-center">
-                  <ImageIcon className="mx-auto h-10 w-10 text-foreground/30" />
-                  <p className="mt-2 text-xs text-foreground/40">{item.label}</p>
-                </div>
+                <img
+                  src={item.src}
+                  alt={item.label}
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
                 <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all group-hover:bg-black/40 group-hover:opacity-100">
                   <Camera className="h-8 w-8 text-white" />
                 </div>
