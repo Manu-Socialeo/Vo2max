@@ -34,7 +34,7 @@ export const clinic: ClinicInfo = {
   instagram: "https://www.instagram.com/vo2max_prf/",
   linkedin:
     "https://www.linkedin.com/company/vo2-max-physiotherapy-rehabilitation-fitness",
-  facebook: "https://www.facebook.com/people/VO2-Max-Physiotherapy-Rehabilitation-Fitness/61574654481980/",
+  facebook: "https://www.facebook.com/Vo2MaxPhysiotherapyRehabilitationFitness/",
   website: "https://vo2max.in",
 };
 
