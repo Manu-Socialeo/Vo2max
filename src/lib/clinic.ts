@@ -47,6 +47,7 @@ export interface Doctor {
   bio: string;
   specialties: string[];
   image: string;
+  linkedin?: string;
 }
 
 export const doctors: Doctor[] = [
@@ -81,6 +82,7 @@ export const doctors: Doctor[] = [
       "Posture Correction",
     ],
     image: "/images/team/dr-pinakin.webp",
+    linkedin: "https://in.linkedin.com/in/pinakin-ayare",
   },
 ];
 
