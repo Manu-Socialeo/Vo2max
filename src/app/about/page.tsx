@@ -77,10 +77,10 @@ export default function About() {
               <h2 className="mt-4 text-slate-900">
                 Empowering movement, restoring function, accelerating recovery
               </h2>
-              <p className="mt-6 text-sm leading-relaxed text-slate-600 sm:text-base">
+              <p className="mt-6 text-base leading-relaxed text-slate-800 font-medium sm:text-lg">
                 At VO2 Max Physiotherapy Rehabilitation &amp; Fitness Center, we believe that effective rehabilitation requires a seamless fusion of hands-on manual expertise, modern therapeutic modalities, and progressive functional exercise.
               </p>
-              <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+              <p className="mt-4 text-[15px] leading-relaxed text-slate-800 font-medium sm:text-base">
                 From competitive athletic injuries and post-surgical orthopedics to chronic spine pain and cardiac rehabilitation, our center provides compassionate, results-driven clinical care in Mysuru.
               </p>
               <ul className="mt-8 space-y-3.5">
@@ -91,7 +91,7 @@ export default function About() {
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3">
                     <CheckCircle2 className="h-4 w-4 shrink-0 text-[#0052FF]" />
-                    <span className="text-xs font-semibold text-slate-700 sm:text-sm">
+                    <span className="text-sm font-semibold text-slate-900">
                       {item}
                     </span>
                   </li>
@@ -124,7 +124,7 @@ export default function About() {
                 <div className="text-4xl font-bold text-[#0052FF] lg:text-5xl">
                   <AnimatedCounter values={stat.values} suffix={stat.suffix} />
                 </div>
-                <p className="mt-2 text-xs font-medium text-slate-600">
+                <p className="mt-2 text-xs font-bold text-slate-800">
                   {stat.label}
                 </p>
               </div>
@@ -138,8 +138,8 @@ export default function About() {
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <span className="section-subtitle">Our Leadership</span>
-            <h2 className="mt-4 text-slate-900">Meet our chief specialists</h2>
-            <p className="mx-auto mt-3 text-sm text-slate-600 sm:text-base">
+            <h2 className="mt-4 text-black">Meet our chief specialists</h2>
+            <p className="mx-auto mt-3 text-base text-slate-800 font-medium">
               Direct, hands-on clinical care led by our founders with postgraduate master&apos;s degrees in physical therapy.
             </p>
           </div>

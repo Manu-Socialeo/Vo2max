@@ -13,44 +13,44 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-white text-slate-700">
+    <footer className="border-t border-slate-200 bg-white text-slate-800">
       <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Column 1: Brand */}
           <div>
             <Link href="/" className="flex items-center gap-3">
-              <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-blue-50 p-1">
+              <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl bg-blue-50 p-1">
                 <Image
                   src="/images/logo.png"
                   alt="VO2 Max Logo"
-                  width={44}
-                  height={44}
+                  width={48}
+                  height={48}
                   className="h-full w-full object-contain"
                 />
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-bold tracking-tight text-slate-900 leading-none">
+                <span className="text-2xl font-bold tracking-tight text-black leading-none">
                   VO2 <span className="text-[#0052FF]">MAX</span>
                 </span>
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
                   Physiotherapy & Rehab
                 </span>
               </div>
             </Link>
-            <p className="mt-4 text-xs leading-relaxed text-slate-600">
+            <p className="mt-4 text-sm font-semibold text-slate-900 leading-relaxed">
               {clinic.name}
             </p>
-            <p className="mt-3 text-xs leading-relaxed text-slate-500">
+            <p className="mt-2 text-xs leading-relaxed text-slate-700 font-medium">
               Premier physiotherapy, athletic injury rehabilitation, and post-surgical recovery clinic in Vijayanagar II Stage, Mysuru.
             </p>
           </div>
 
           {/* Column 2: Quick Links */}
           <div>
-            <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-slate-900">
+            <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-black">
               Quick Links
             </h3>
-            <ul className="space-y-2.5 text-sm text-slate-600">
+            <ul className="space-y-2.5 text-sm font-medium text-slate-800">
               <li>
                 <Link href="/about" className="transition-colors hover:text-[#0052FF]">
                   About Our Center
@@ -86,10 +86,10 @@ export default function Footer() {
 
           {/* Column 3: Specialized Services */}
           <div>
-            <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-slate-900">
+            <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-black">
               Key Treatments
             </h3>
-            <ul className="space-y-2.5 text-sm text-slate-600">
+            <ul className="space-y-2.5 text-sm font-medium text-slate-800">
               {services.slice(0, 5).map((service) => (
                 <li key={service.id}>
                   <Link
@@ -104,7 +104,7 @@ export default function Footer() {
             <div className="mt-4">
               <Link
                 href="/services"
-                className="inline-flex items-center gap-1 text-xs font-semibold text-[#0052FF] hover:underline"
+                className="inline-flex items-center gap-1 text-xs font-bold text-[#0052FF] hover:underline"
               >
                 View all 14 treatments <ArrowRight className="h-3 w-3" />
               </Link>
@@ -113,10 +113,10 @@ export default function Footer() {
 
           {/* Column 4: Contact Info */}
           <div>
-            <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-slate-900">
+            <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-black">
               Clinic Contact
             </h3>
-            <ul className="space-y-3 text-xs text-slate-600">
+            <ul className="space-y-3 text-xs font-medium text-slate-800">
               <li className="flex items-start gap-2.5">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#0052FF]" />
                 <a
@@ -130,7 +130,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="h-4 w-4 shrink-0 text-[#0052FF]" />
-                <a href={`tel:${clinic.phone}`} className="font-semibold text-slate-800 hover:text-[#0052FF]">
+                <a href={`tel:${clinic.phone}`} className="font-bold text-black hover:text-[#0052FF]">
                   {clinic.phone}
                 </a>
               </li>
@@ -142,14 +142,14 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2.5">
                 <Clock className="mt-0.5 h-4 w-4 shrink-0 text-[#0052FF]" />
-                <span>{clinic.timings}</span>
+                <span className="text-slate-800">{clinic.timings}</span>
               </li>
             </ul>
 
             <div className="mt-5">
               <Link
                 href="/book-appointment"
-                className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-xs font-bold text-[#0052FF] transition-colors hover:bg-[#0052FF] hover:text-white"
+                className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-5 py-2.5 text-xs font-bold text-[#0052FF] transition-colors hover:bg-[#0052FF] hover:text-white"
               >
                 <Calendar className="h-3.5 w-3.5" />
                 Book Appointment
@@ -158,8 +158,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-slate-100 pt-6">
-          <div className="flex flex-col items-center justify-between gap-4 text-center text-xs text-slate-500 sm:flex-row sm:text-left">
+        <div className="mt-12 border-t border-slate-200 pt-6">
+          <div className="flex flex-col items-center justify-between gap-4 text-center text-xs font-medium text-slate-700 sm:flex-row sm:text-left">
             <p>&copy; {new Date().getFullYear()} {clinic.name}. All rights reserved.</p>
             <div className="flex flex-wrap gap-5">
               <Link href="/privacy-policy" className="transition-colors hover:text-[#0052FF]">
@@ -175,6 +175,17 @@ export default function Footer() {
                 Appointment Policy
               </Link>
             </div>
+          </div>
+
+          <div className="mt-4 text-center text-xs font-medium text-slate-600">
+            <a
+              href="https://wa.me/918722163256?text=Hi%2C%20I%20would%20like%20to%20get%20my%20website%20built%20by%20Socialeo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-slate-700 transition-colors hover:text-[#0052FF]"
+            >
+              Built with <span className="text-red-500">❤️</span> by <span className="font-bold underline text-black hover:text-[#0052FF]">Socialeo</span>
+            </a>
           </div>
         </div>
       </div>

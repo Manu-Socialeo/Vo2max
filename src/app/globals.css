@@ -49,22 +49,22 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #1e293b;
+  --foreground: #090d16;
   --card: #ffffff;
-  --card-foreground: #1e293b;
+  --card-foreground: #090d16;
   --popover: #ffffff;
-  --popover-foreground: #1e293b;
+  --popover-foreground: #090d16;
   --primary: #0052ff;
   --primary-foreground: #ffffff;
   --secondary: #0a192f;
   --secondary-foreground: #ffffff;
   --muted: #f8fafc;
-  --muted-foreground: #64748b;
+  --muted-foreground: #1e293b;
   --accent: #00d2ff;
   --accent-foreground: #0a192f;
   --destructive: oklch(0.58 0.22 25);
-  --border: #e2e8f0;
-  --input: #e2e8f0;
+  --border: #cbd5e1;
+  --input: #cbd5e1;
   --ring: #0052ff;
   --chart-1: #0052ff;
   --chart-2: #00d2ff;
@@ -73,34 +73,34 @@
   --chart-5: #6366f1;
   --radius: 16px;
   --sidebar: #ffffff;
-  --sidebar-foreground: #1e293b;
+  --sidebar-foreground: #090d16;
   --sidebar-primary: #0052ff;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #f8fafc;
-  --sidebar-accent-foreground: #1e293b;
-  --sidebar-border: #e2e8f0;
+  --sidebar-accent-foreground: #090d16;
+  --sidebar-border: #cbd5e1;
   --sidebar-ring: #0052ff;
 }
 
 .dark {
-  --background: #0b0f19;
+  --background: #07090e;
   --foreground: #f8fafc;
-  --card: #131b2e;
+  --card: #0f172a;
   --card-foreground: #f8fafc;
-  --popover: #131b2e;
+  --popover: #0f172a;
   --popover-foreground: #f8fafc;
   --primary: #2563eb;
   --primary-foreground: #ffffff;
   --secondary: #1e293b;
   --secondary-foreground: #ffffff;
   --muted: #1e293b;
-  --muted-foreground: #94a3b8;
+  --muted-foreground: #cbd5e1;
   --accent: #00d2ff;
   --accent-foreground: #ffffff;
   --border: #334155;
   --input: #334155;
   --ring: #3b82f6;
-  --sidebar: #131b2e;
+  --sidebar: #0f172a;
   --sidebar-foreground: #f8fafc;
   --sidebar-primary: #2563eb;
   --sidebar-primary-foreground: #ffffff;
@@ -116,35 +116,42 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 17px;
+    line-height: 1.65;
     letter-spacing: -0.011em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   html {
     @apply font-sans scroll-smooth;
   }
   h1 {
-    font-size: clamp(32px, 5vw, 56px);
-    font-weight: 700;
+    font-size: clamp(34px, 5.5vw, 60px);
+    font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.035em;
+    color: #090d16;
   }
   h2 {
-    font-size: clamp(26px, 4vw, 42px);
+    font-size: clamp(28px, 4.2vw, 44px);
     font-weight: 700;
     line-height: 1.15;
     letter-spacing: -0.03em;
+    color: #090d16;
   }
   h3 {
-    font-size: clamp(20px, 3vw, 28px);
-    font-weight: 600;
+    font-size: clamp(21px, 3.2vw, 30px);
+    font-weight: 700;
     line-height: 1.25;
     letter-spacing: -0.02em;
+    color: #090d16;
   }
   h4 {
-    font-size: clamp(17px, 2.5vw, 22px);
+    font-size: clamp(18px, 2.6vw, 24px);
     font-weight: 600;
     line-height: 1.35;
+    color: #090d16;
   }
 }
 

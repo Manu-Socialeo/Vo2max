@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 
 const slides = [
-  { src: "/images/hero-bg.jpg", alt: "VO2 Max Physiotherapy" },
-  { src: "/images/hero-1.jpg", alt: "Physiotherapy Treatment" },
-  { src: "/images/hero-2.jpg", alt: "Rehabilitation Care" },
+  { src: "/images/hero-banner-main.jpg", alt: "VO2 Max Sports Physiotherapy & Physical Rehabilitation Center" },
+  { src: "/images/gallery/gallery-1.jpg", alt: "Modern Electrotherapy and Modality Suites" },
+  { src: "/images/gallery/gallery-10.jpg", alt: "Functional Rehabilitation & Movement Area" },
 ];
 
 export default function HeroCarousel({ className = "" }: { className?: string }) {

@@ -221,24 +221,24 @@ export default function Home() {
               return (
                 <div
                   key={pillar.title}
-                  className="group relative rounded-2xl border border-slate-100 bg-white p-7 shadow-xl shadow-slate-900/5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-500/10"
+                  className="group relative rounded-2xl border border-slate-200/90 bg-white p-7 shadow-xl shadow-slate-900/5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-500/10"
                 >
                   <div className="mb-5 flex items-center justify-between">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-[#0052FF] transition-colors group-hover:bg-[#0052FF] group-hover:text-white">
                       <Icon className="h-6 w-6" />
                     </div>
-                    <span className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold text-slate-600">
+                    <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-800">
                       {pillar.badge}
                     </span>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900">{pillar.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  <h3 className="text-xl font-bold text-black">{pillar.title}</h3>
+                  <p className="mt-2.5 text-[15px] leading-relaxed text-slate-800 font-medium">
                     {pillar.desc}
                   </p>
                   <div className="mt-5">
                     <Link
                       href="/about"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0052FF] transition-colors group-hover:text-[#0042D1]"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0052FF] transition-colors group-hover:text-[#0042D1]"
                     >
                       Explore methodology
                       <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
@@ -256,10 +256,10 @@ export default function Home() {
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <span className="section-subtitle">Clinical Leadership</span>
-            <h2 className="mt-4 text-slate-900">
+            <h2 className="mt-4 text-black">
               Trusted medical leadership with decades of specialization
             </h2>
-            <p className="mt-3 text-base text-slate-600">
+            <p className="mt-3 text-base text-slate-800 font-medium">
               At VO2 Max, your recovery is directly guided by certified MPT founders and experienced physiotherapists dedicated to world-class musculoskeletal care.
             </p>
           </div>
@@ -268,7 +268,7 @@ export default function Home() {
             {doctors.map((doctor) => (
               <div
                 key={doctor.id}
-                className="flex flex-col overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-blue-200 lg:flex-row lg:items-center lg:gap-8"
+                className="flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-blue-300 lg:flex-row lg:items-center lg:gap-8"
               >
                 <div className="relative mx-auto h-44 w-44 shrink-0 overflow-hidden rounded-2xl bg-blue-50/70 border border-blue-100 shadow-inner">
                   <Image
@@ -278,26 +278,26 @@ export default function Home() {
                     height={180}
                     className="h-full w-full object-cover object-top"
                   />
-                  <div className="absolute bottom-2 left-2 rounded-md bg-white/90 px-2 py-0.5 text-[10px] font-bold text-[#0052FF] shadow-xs">
+                  <div className="absolute bottom-2 left-2 rounded-md bg-white px-2 py-0.5 text-[11px] font-bold text-[#0052FF] shadow-xs">
                     {doctor.experience}
                   </div>
                 </div>
 
                 <div className="mt-6 flex-1 text-center lg:mt-0 lg:text-left">
                   <div className="flex flex-wrap items-center justify-center gap-2 lg:justify-start">
-                    <span className="rounded-full bg-blue-50 px-2.5 py-0.5 text-[11px] font-bold text-[#0052FF]">
+                    <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-[#0052FF]">
                       {doctor.qualifications}
                     </span>
-                    <span className="text-xs text-slate-500 font-medium">
+                    <span className="text-xs text-slate-700 font-semibold">
                       {doctor.title}
                     </span>
                   </div>
 
-                  <h3 className="mt-2 text-xl font-bold text-slate-900">
+                  <h3 className="mt-2 text-2xl font-bold text-black">
                     {doctor.name}
                   </h3>
 
-                  <p className="mt-3 text-xs leading-relaxed text-slate-600 line-clamp-3">
+                  <p className="mt-3 text-sm leading-relaxed text-slate-800 font-medium line-clamp-3">
                     {doctor.bio}
                   </p>
 
@@ -305,7 +305,7 @@ export default function Home() {
                     {doctor.specialties.slice(0, 3).map((spec) => (
                       <span
                         key={spec}
-                        className="rounded-lg bg-slate-100 px-2.5 py-1 text-[11px] font-medium text-slate-700"
+                        className="rounded-lg bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-800"
                       >
                         {spec}
                       </span>
@@ -315,7 +315,7 @@ export default function Home() {
                   <div className="mt-6">
                     <Link
                       href="/book-appointment"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0052FF] hover:underline"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0052FF] hover:underline"
                     >
                       Book Consultation with {doctor.name.split(" ")[0]} {doctor.name.split(" ")[1]}
                       <ArrowRight className="h-3.5 w-3.5" />
@@ -334,16 +334,16 @@ export default function Home() {
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
             <div>
               <span className="section-subtitle">Specialized Treatments</span>
-              <h2 className="mt-4 text-slate-900">
+              <h2 className="mt-4 text-black">
                 Comprehensive recovery protocols
               </h2>
-              <p className="mt-2 text-base text-slate-600 max-w-xl">
+              <p className="mt-2 text-base text-slate-800 font-medium max-w-xl">
                 Targeted physical therapies engineered to accelerate rehabilitation, eliminate pain, and restore active lifestyle.
               </p>
             </div>
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-700 transition-colors hover:border-[#0052FF] hover:bg-blue-50/50 hover:text-[#0052FF]"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-black transition-colors hover:border-[#0052FF] hover:bg-blue-50/50 hover:text-[#0052FF]"
             >
               View All 14 Services
               <ArrowRight className="h-3.5 w-3.5" />
@@ -357,27 +357,27 @@ export default function Home() {
                 <Link
                   key={service.id}
                   href={`/services/${service.id}`}
-                  className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-8 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/10"
+                  className="group relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-8 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/10"
                 >
                   <div>
                     <div className="flex items-center justify-between">
                       <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-[#0052FF] transition-colors group-hover:bg-[#0052FF] group-hover:text-white">
                         <Icon className="h-6 w-6" />
                       </div>
-                      <span className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold text-slate-600 group-hover:bg-blue-50 group-hover:text-[#0052FF]">
+                      <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-800 group-hover:bg-blue-50 group-hover:text-[#0052FF]">
                         {service.category}
                       </span>
                     </div>
 
-                    <h3 className="mt-6 text-lg font-bold text-slate-900 transition-colors group-hover:text-[#0052FF]">
+                    <h3 className="mt-6 text-xl font-bold text-black transition-colors group-hover:text-[#0052FF]">
                       {service.title}
                     </h3>
-                    <p className="mt-2.5 text-sm leading-relaxed text-slate-600">
+                    <p className="mt-2.5 text-[15px] leading-relaxed text-slate-800 font-medium">
                       {service.desc}
                     </p>
                   </div>
 
-                  <div className="mt-6 flex items-center gap-1.5 text-xs font-semibold text-[#0052FF] pt-4 border-t border-slate-100">
+                  <div className="mt-6 flex items-center gap-1.5 text-xs font-bold text-[#0052FF] pt-4 border-t border-slate-100">
                     <span>Clinical protocol details</span>
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                   </div>
@@ -393,10 +393,10 @@ export default function Home() {
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <span className="section-subtitle">Clinic Environment</span>
-            <h2 className="mt-4 text-slate-900">
+            <h2 className="mt-4 text-black">
               State-of-the-art rehabilitation facility
             </h2>
-            <p className="mt-3 text-base text-slate-600">
+            <p className="mt-3 text-base text-slate-800 font-medium">
               Equipped with modern therapeutic modalities, private consultation suites, and dedicated athletic training spaces in Vijayanagar II Stage, Mysuru.
             </p>
           </div>
@@ -416,10 +416,10 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
-                    <span className="inline-block rounded-md bg-white/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-md">
+                    <span className="inline-block rounded-md bg-white/20 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wider text-white backdrop-blur-md">
                       {item.tag}
                     </span>
-                    <h4 className="mt-1 text-sm font-bold text-white leading-snug">
+                    <h4 className="mt-1 text-[15px] font-bold text-white leading-snug">
                       {item.title}
                     </h4>
                   </div>
@@ -431,7 +431,7 @@ export default function Home() {
           <div className="mt-10 text-center">
             <Link
               href="/gallery"
-              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0052FF] hover:underline"
+              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0052FF] hover:underline"
             >
               View complete photo gallery
               <ArrowRight className="h-3.5 w-3.5" />
@@ -445,10 +445,10 @@ export default function Home() {
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <span className="section-subtitle">Transparent Care</span>
-            <h2 className="mt-4 text-slate-900">
+            <h2 className="mt-4 text-black">
               Clear, structured care packages
             </h2>
-            <p className="mt-3 text-base text-slate-600">
+            <p className="mt-3 text-base text-slate-800 font-medium">
               No hidden fees. Every session is designed for measurable recovery milestones under expert clinical supervision.
             </p>
           </div>
@@ -471,25 +471,25 @@ export default function Home() {
 
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-[#0052FF]">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#0052FF]">
                       {plan.badge}
                     </span>
                   </div>
 
-                  <h3 className="mt-2 text-xl font-bold text-slate-900">
+                  <h3 className="mt-2 text-2xl font-bold text-black">
                     {plan.name}
                   </h3>
-                  <p className="mt-1 text-xs text-slate-500">
+                  <p className="mt-1 text-xs text-slate-700 font-semibold">
                     {plan.subtitle}
                   </p>
 
-                  <div className="my-6 border-t border-slate-200/80" />
+                  <div className="my-6 border-t border-slate-200" />
 
                   <ul className="space-y-3.5">
                     {plan.features.map((feat) => (
                       <li key={feat} className="flex items-start gap-3">
                         <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#0052FF]" />
-                        <span className="text-xs font-medium text-slate-700 leading-relaxed">
+                        <span className="text-sm font-semibold text-slate-900 leading-relaxed">
                           {feat}
                         </span>
                       </li>
@@ -503,7 +503,7 @@ export default function Home() {
                     className={`inline-flex w-full items-center justify-center gap-2 rounded-full py-3.5 text-xs font-bold uppercase tracking-wider transition-all ${
                       plan.popular
                         ? "bg-linear-to-r from-[#0052FF] to-[#0042D1] text-white shadow-md hover:shadow-lg hover:-translate-y-0.5"
-                        : "border border-slate-300 bg-white text-slate-800 hover:bg-slate-50 hover:border-slate-400"
+                        : "border border-slate-300 bg-white text-black font-bold hover:bg-slate-50 hover:border-slate-400"
                     }`}
                   >
                     Schedule Assessment
@@ -521,10 +521,10 @@ export default function Home() {
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <span className="section-subtitle">Real Patient Outcomes</span>
-            <h2 className="mt-4 text-slate-900">
+            <h2 className="mt-4 text-black">
               Recovered patients across Mysuru
             </h2>
-            <p className="mt-3 text-base text-slate-600">
+            <p className="mt-3 text-base text-slate-800 font-medium">
               From elite marathoners to post-surgery rehabilitation, hear directly from patients who regained pain-free mobility.
             </p>
           </div>
@@ -541,7 +541,7 @@ export default function Home() {
                       <Star key={i} className="h-4 w-4 fill-amber-400" />
                     ))}
                   </div>
-                  <p className="mt-4 text-sm leading-relaxed text-slate-700 italic">
+                  <p className="mt-4 text-[15px] leading-relaxed text-black font-medium italic">
                     &ldquo;{t.text}&rdquo;
                   </p>
                 </div>
@@ -551,8 +551,8 @@ export default function Home() {
                     {t.name.charAt(0)}
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-slate-900">{t.name}</h4>
-                    <span className="text-[11px] font-medium text-slate-500">
+                    <h4 className="text-base font-bold text-black">{t.name}</h4>
+                    <span className="text-xs font-semibold text-slate-700">
                       Verified Patient • Mysuru
                     </span>
                   </div>
@@ -564,7 +564,7 @@ export default function Home() {
           <div className="mt-10 text-center">
             <Link
               href="/testimonials"
-              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0052FF] hover:underline"
+              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0052FF] hover:underline"
             >
               Read more patient testimonials
               <ArrowRight className="h-3.5 w-3.5" />
@@ -588,7 +588,7 @@ export default function Home() {
             Ready to live without pain and regain your mobility?
           </h2>
 
-          <p className="mx-auto mt-4 max-w-xl text-base text-slate-300">
+          <p className="mx-auto mt-4 max-w-xl text-base text-slate-200 font-normal">
             Take the first step today. Book your clinical consultation with Dr. Pradeep &amp; the specialized physiotherapy team at VO2 Max.
           </p>
 
