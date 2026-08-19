@@ -1,384 +1,630 @@
 import Link from "next/link";
-import { ArrowRight, Check, Play, Star } from "lucide-react";
-import { services, clinic, testimonials } from "@/lib/clinic";
+import Image from "next/image";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Phone,
+  Calendar,
+  Award,
+  Users,
+  ShieldCheck,
+  Star,
+  Activity,
+  Zap,
+  HeartPulse,
+  Dumbbell,
+  Stethoscope,
+  Sparkles,
+  MapPin,
+  ChevronRight,
+  Clock,
+} from "lucide-react";
+import { clinic, doctors, testimonials } from "@/lib/clinic";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import HeroCarousel from "@/components/HeroCarousel";
 
-const serviceIconMap: Record<string, string> = {
-  Stethoscope: "/images/experienced-staff.svg",
-  HeartPulse: "/images/experienced-staff.svg",
-  Zap: "/images/personalized-plans.svg",
-  Heart: "/images/personalized-plans.svg",
-  Dumbbell: "/images/proven-results.svg",
-  Scale: "/images/experienced-staff.svg",
-};
-
-const previewServices = services.slice(0, 6);
-
-const previewPlans = [
+const featurePillars = [
   {
-    name: "Consultation",
-    subtitle: "Initial Assessment",
-    features: [
-      "Initial consultation & diagnosis",
-      "Follow-up session",
-      "Progress assessment",
-    ],
+    icon: Award,
+    title: "18+ Years Clinical Mastery",
+    desc: "Led by certified MPT specialists with decades of proven musculoskeletal & sports recovery expertise.",
+    badge: "Expertise",
   },
   {
-    name: "Treatment Package",
-    subtitle: "Recovery Program",
+    icon: HeartPulse,
+    title: "Individualized Protocols",
+    desc: "Targeted, science-backed rehabilitation tailored to your specific anatomy, injury stage, and recovery goals.",
+    badge: "Personalized",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Proven Long-Term Recovery",
+    desc: "Over 5,000+ patients across Mysuru restored to pain-free mobility, active athletics, and peak vitality.",
+    badge: "Results",
+  },
+];
+
+const clinicalServices = [
+  {
+    id: "physiotherapy",
+    title: "Manual Physiotherapy",
+    category: "Pain Relief",
+    desc: "Evidence-based manual therapy, joint mobilization, and electrotherapy modalities for acute & chronic pain.",
+    icon: Stethoscope,
+    popular: true,
+  },
+  {
+    id: "sports-rehabilitation",
+    title: "Sports Injury & Athletic Rehab",
+    category: "Athletic Performance",
+    desc: "Specialized return-to-sport programs for runners, athletes, ACL tears, shoulder impingements, and muscle strains.",
+    icon: Zap,
+    popular: true,
+  },
+  {
+    id: "post-surgical-rehabilitation",
+    title: "Post-Surgical Care",
+    category: "Surgical Recovery",
+    desc: "Structured clinical protocols following total knee/hip replacements, spine surgeries, and ligament repairs.",
+    icon: Activity,
+    popular: true,
+  },
+  {
+    id: "cardiac-rehabilitation",
+    title: "Cardiac & Pulmonary Rehab",
+    category: "Cardio Health",
+    desc: "Monitored cardiovascular conditioning and supervised endurance programs to restore heart health.",
+    icon: HeartPulse,
+    popular: false,
+  },
+  {
+    id: "neurology-rehabilitation",
+    title: "Neuro Rehabilitation",
+    category: "Neurological Care",
+    desc: "Targeted neuro-physiotherapy for stroke recovery, Parkinson's disease, balance disorders, and nerve injuries.",
+    icon: Sparkles,
+    popular: false,
+  },
+  {
+    id: "exercise-therapy",
+    title: "Functional Exercise & Posture",
+    category: "Strength & Posture",
+    desc: "Custom corrective exercise, ergonomic posture alignment, core stabilization, and healthy weight management.",
+    icon: Dumbbell,
+    popular: false,
+  },
+];
+
+const transparentPlans = [
+  {
+    name: "Initial Assessment",
+    subtitle: "Comprehensive Clinical Diagnosis",
+    badge: "First Visit",
     features: [
-      "4-session discounted package",
-      "6-session extended rehab",
-      "8-session recovery plan",
+      "In-depth physical & biomechanical examination",
+      "Root-cause diagnosis & range-of-motion testing",
+      "Personalized treatment roadmap & prognosis",
+      "Initial pain-relief therapy session",
+    ],
+    popular: false,
+  },
+  {
+    name: "Intensive Rehab Package",
+    subtitle: "Active Recovery & Rehabilitation",
+    badge: "Most Popular",
+    features: [
+      "Custom 6 to 8 session clinical recovery program",
+      "Targeted manual therapy & electro-modalities",
+      "Supervised functional exercise progression",
+      "Weekly milestone & mobility re-evaluations",
+      "Customized home exercise & ergonomics guide",
     ],
     popular: true,
   },
   {
-    name: "Fitness Program",
-    subtitle: "Wellness & Training",
+    name: "Athletic & Posture Conditioning",
+    subtitle: "Peak Performance & Prevention",
+    badge: "Long-Term Health",
     features: [
-      "Monthly membership",
-      "Personal training",
-      "Diet & lifestyle guidance",
+      "Biomechanical gait & running analysis",
+      "Postural realignment & core stability training",
+      "Injury prevention & strength conditioning",
+      "Direct guidance from Senior Sports Physiotherapist",
     ],
+    popular: false,
   },
+];
+
+const galleryHighlights = [
+  { src: "/images/gallery/gallery-1.jpg", title: "Modern Modality Suites", tag: "Electrotherapy" },
+  { src: "/images/gallery/gallery-10.jpg", title: "Functional Rehab Area", tag: "Mobility Training" },
+  { src: "/images/gallery/gallery-4.jpg", title: "Specialized Exercise Zone", tag: "Strength & Conditioning" },
+  { src: "/images/gallery/gallery-6.jpg", title: "Clinical Assessment Bay", tag: "Patient Care" },
 ];
 
 export default function Home() {
   return (
-    <>
-      {/* ====================== HERO ====================== */}
-      <section className="relative overflow-hidden" style={{ paddingTop: "130px", paddingBottom: "280px" }}>
+    <div className="flex flex-col bg-white text-slate-800">
+      {/* ====================== 1. HERO SECTION ====================== */}
+      <section className="relative min-h-[640px] overflow-hidden pt-28 pb-32 sm:pt-36 sm:pb-40 lg:min-h-[720px] lg:pt-40 lg:pb-48">
         <HeroCarousel className="absolute inset-0" />
-        <div className="absolute inset-0 bg-[#343434]/40" />
-        <div className="relative z-10 mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <div className="max-w-[560px]">
-              <span className="inline-flex items-center gap-2.5 text-[13px] font-medium uppercase tracking-[2px] text-white before:inline-block before:h-[2px] before:w-6 before:bg-white">
-                Trusted experts
+        {/* Modern Athletic Lighting Overlay */}
+        <div className="absolute inset-0 bg-linear-to-r from-slate-950/90 via-slate-900/75 to-blue-950/65" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,82,255,0.25),transparent_60%)]" />
+
+        <div className="relative z-10 mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            {/* Top Pill */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/15 px-4 py-1.5 backdrop-blur-md">
+              <span className="h-2 w-2 rounded-full bg-[#00D2FF] animate-pulse" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-blue-200">
+                Mysuru&apos;s Premier Physiotherapy & Sports Rehab Center
               </span>
-              <h1 className="mt-5 text-white">
-                Expert support for physical wellness
-              </h1>
-              <p className="mt-5 max-w-lg text-[17px] leading-relaxed text-white/70">
-                Expert treatments designed to relieve pain, restore movement, and improve your overall physical health.
-              </p>
-              <Link
-                href="/contact"
-                className="mt-8 inline-flex items-center gap-2 rounded-[30px] bg-[#0052FF] px-6 py-[18px] text-[12px] font-medium uppercase tracking-[2px] text-white transition-all hover:bg-[#0046E0]"
-              >
-                Let&apos;s get started
-                <ArrowRight className="h-4 w-4" />
-              </Link>
             </div>
-            {/* Video play button */}
-            <div className="hidden lg:flex">
-              <a
-                href="https://www.youtube.com/@vo2maxphysiotherapy"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glow-ripple flex h-20 w-20 items-center justify-center rounded-full border-2 border-white/30 text-white transition-colors hover:border-white/60"
-                aria-label="Watch our video"
+
+            <h1 className="mt-6 font-bold tracking-tight text-white leading-tight">
+              Precision care to restore movement &amp;{" "}
+              <span className="bg-linear-to-r from-blue-300 via-sky-200 to-[#00D2FF] bg-clip-text text-transparent">
+                peak performance
+              </span>
+            </h1>
+
+            <p className="mt-6 text-base leading-relaxed text-slate-200 sm:text-lg">
+              Evidence-based manual therapy, advanced sports injury rehab, and post-surgical recovery programs led by Senior Clinical Specialists in Mysuru.
+            </p>
+
+            {/* Dual CTAs */}
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <Link
+                href="/book-appointment"
+                className="inline-flex items-center gap-2.5 rounded-full bg-linear-to-r from-[#0052FF] to-[#0042D1] px-7 py-4 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-blue-500/30 transition-all hover:shadow-xl hover:shadow-blue-500/40 hover:-translate-y-0.5"
               >
-                <Play className="ml-1 h-7 w-7" />
+                <Calendar className="h-4 w-4" />
+                Book Clinical Assessment
+              </Link>
+              <a
+                href={`tel:${clinic.phone}`}
+                className="inline-flex items-center gap-2.5 rounded-full border border-white/25 bg-white/10 px-6 py-4 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md transition-all hover:bg-white/20 hover:border-white/40"
+              >
+                <Phone className="h-4 w-4 text-[#00D2FF]" />
+                Call +91 94801 66770
               </a>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ====================== FEATURE CARDS ====================== */}
-      <section className="bg-[#0052FF]">
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row">
-            {[
-              {
-                img: "/images/experienced-staff.svg",
-                title: "Experienced staff",
-                desc: "Highly qualified therapists with years of practical experience.",
-              },
-              {
-                img: "/images/personalized-plans.svg",
-                title: "Personalized plans",
-                desc: "Treatments tailored to each patient's unique needs and goals.",
-              },
-              {
-                img: "/images/proven-results.svg",
-                title: "Proven results",
-                desc: "Many patients successfully regain strength and mobility here.",
-              },
-            ].map((card, i) => (
-              <div
-                key={card.title}
-                className={`flex-1 bg-white px-[60px] pb-[45px] pt-[50px] ${i < 2 ? "border-r border-[#EEF1E4]" : ""}`}
-              >
-                <img
-                  src={card.img}
-                  alt=""
-                  width={48}
-                  height={48}
-                  className="mb-6"
-                />
-                <h3 className="text-[24px] font-medium text-[#343434]">
-                  {card.title}
-                </h3>
-                <p className="mt-3 text-[14px] leading-relaxed text-[#343434]/70">
-                  {card.desc}
-                </p>
-                <Link
-                  href="/about"
-                  className="mt-5 inline-flex items-center gap-1 text-[14px] font-medium text-[#343434] transition-colors hover:text-[#0052FF]"
-                >
-                  Read more
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
+            {/* Quick Proof Badges */}
+            <div className="mt-12 flex flex-wrap items-center gap-6 border-t border-white/15 pt-6 text-xs font-medium text-slate-300">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-[#00D2FF]" />
+                <span>18+ Years Experience</span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ====================== OUR STORY ====================== */}
-      <section className="bg-[#EEF1E4] py-[100px]">
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center gap-0 lg:flex-row">
-            <div className="flex-1 lg:mr-3 lg:ml-3">
-              <span className="section-subtitle">Our story</span>
-              <h2 className="mt-4 max-w-xl">
-                Dedicated to your{" "}
-                <span className="text-primary">physical wellbeing</span>
-              </h2>
-              <p className="mt-6 max-w-md text-[16px] leading-relaxed text-[#343434]/70">
-                We focus on delivering compassionate, effective physiotherapy
-                services to help you regain strength and improve daily living
-                activities.
-              </p>
-              <ul className="mt-8 space-y-4">
-                {[
-                  "35 years experience",
-                  "Flexible appointment times",
-                  "Ongoing progress monitoring",
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-3">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#0052FF]/10">
-                      <Check className="h-3.5 w-3.5 text-[#0052FF]" />
-                    </span>
-                    <span className="text-[15px] font-medium text-[#343434]/80">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/services"
-                className="btn-primary mt-8 inline-flex items-center gap-2 rounded-[30px] bg-[#0052FF] px-6 py-[18px] text-[12px] font-medium uppercase tracking-[2px] text-white transition-all hover:bg-[#0046E0]"
-              >
-                Our services
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-            <div className="mt-10 flex-1 lg:mt-0 lg:ml-3 lg:mr-3">
-              <img
-                src="/images/about-img.jpg"
-                alt="Physiotherapy"
-                className="w-full max-w-[530px] rounded-[20px] object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ====================== STATS ====================== */}
-      <section className="py-[100px]">
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 text-center sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { values: [20, 35, 500, 98], suffix: "+", label: "Years of experience" },
-              { values: [35, 20, 98, 500], suffix: "+", label: "Therapy techniques" },
-              { values: [500, 20, 35, 98], suffix: "+", label: "Patients treated" },
-              { values: [98, 500, 20, 35], suffix: "%", label: "Satisfaction rate" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <div className="text-5xl font-medium text-[#0052FF] lg:text-6xl">
-                  <AnimatedCounter values={stat.values} suffix={stat.suffix} />
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-[#00D2FF]" />
+                <span>5,000+ Recovered Patients</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="flex text-amber-400">
+                  {"★".repeat(5)}
                 </div>
-                <p className="mt-3 text-[15px] text-[#343434]/70">
-                  {stat.label}
-                </p>
+                <span>4.9/5 Rating</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ====================== 2. FLOATING FEATURE PILLARS ====================== */}
+      <section className="relative z-20 -mt-16 sm:-mt-20">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-6 md:grid-cols-3">
+            {featurePillars.map((pillar) => {
+              const Icon = pillar.icon;
+              return (
+                <div
+                  key={pillar.title}
+                  className="group relative rounded-2xl border border-slate-100 bg-white p-7 shadow-xl shadow-slate-900/5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-500/10"
+                >
+                  <div className="mb-5 flex items-center justify-between">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-[#0052FF] transition-colors group-hover:bg-[#0052FF] group-hover:text-white">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <span className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold text-slate-600">
+                      {pillar.badge}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900">{pillar.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                    {pillar.desc}
+                  </p>
+                  <div className="mt-5">
+                    <Link
+                      href="/about"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0052FF] transition-colors group-hover:text-[#0042D1]"
+                    >
+                      Explore methodology
+                      <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ====================== 3. FOUNDERS & CLINICAL DIRECTORS ====================== */}
+      <section className="py-20 sm:py-28 bg-slate-50/70 border-b border-slate-100">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="section-subtitle">Clinical Leadership</span>
+            <h2 className="mt-4 text-slate-900">
+              Trusted medical leadership with decades of specialization
+            </h2>
+            <p className="mt-3 text-base text-slate-600">
+              At VO2 Max, your recovery is directly guided by certified MPT founders and experienced physiotherapists dedicated to world-class musculoskeletal care.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-8 md:grid-cols-2">
+            {doctors.map((doctor) => (
+              <div
+                key={doctor.id}
+                className="flex flex-col overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-blue-200 lg:flex-row lg:items-center lg:gap-8"
+              >
+                <div className="relative mx-auto h-44 w-44 shrink-0 overflow-hidden rounded-2xl bg-blue-50/70 border border-blue-100 shadow-inner">
+                  <Image
+                    src={doctor.image}
+                    alt={doctor.name}
+                    width={180}
+                    height={180}
+                    className="h-full w-full object-cover object-top"
+                  />
+                  <div className="absolute bottom-2 left-2 rounded-md bg-white/90 px-2 py-0.5 text-[10px] font-bold text-[#0052FF] shadow-xs">
+                    {doctor.experience}
+                  </div>
+                </div>
+
+                <div className="mt-6 flex-1 text-center lg:mt-0 lg:text-left">
+                  <div className="flex flex-wrap items-center justify-center gap-2 lg:justify-start">
+                    <span className="rounded-full bg-blue-50 px-2.5 py-0.5 text-[11px] font-bold text-[#0052FF]">
+                      {doctor.qualifications}
+                    </span>
+                    <span className="text-xs text-slate-500 font-medium">
+                      {doctor.title}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-2 text-xl font-bold text-slate-900">
+                    {doctor.name}
+                  </h3>
+
+                  <p className="mt-3 text-xs leading-relaxed text-slate-600 line-clamp-3">
+                    {doctor.bio}
+                  </p>
+
+                  <div className="mt-4 flex flex-wrap gap-1.5 justify-center lg:justify-start">
+                    {doctor.specialties.slice(0, 3).map((spec) => (
+                      <span
+                        key={spec}
+                        className="rounded-lg bg-slate-100 px-2.5 py-1 text-[11px] font-medium text-slate-700"
+                      >
+                        {spec}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-6">
+                    <Link
+                      href="/book-appointment"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0052FF] hover:underline"
+                    >
+                      Book Consultation with {doctor.name.split(" ")[0]} {doctor.name.split(" ")[1]}
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ====================== OUR SERVICES ====================== */}
-      <section className="bg-[#EEF1E4] py-[100px]">
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="mb-14 text-center">
-            <span className="section-subtitle">What we offer</span>
-            <h2 className="mt-4">Effective recovery treatments</h2>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {previewServices.map((service) => (
-              <Link
-                key={service.id}
-                href={`/services/${service.id}`}
-                className="group rounded-[20px] bg-white p-10 transition-all hover:shadow-lg"
-              >
-                <img
-                  src={serviceIconMap[service.icon] || "/images/experienced-staff.svg"}
-                  alt=""
-                  width={48}
-                  height={48}
-                  className="mb-5"
-                />
-                <h3 className="mb-2 text-[21px] font-medium text-[#343434] lg:text-[21px]">
-                  {service.title}
-                </h3>
-                <p className="text-[14px] leading-relaxed text-[#343434]/70">
-                  {service.description}
-                </p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-[14px] font-medium text-[#343434] transition-colors group-hover:text-[#0052FF]">
-                  Learn more
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </span>
-              </Link>
-            ))}
-          </div>
-          <div className="mt-12 text-center">
+      {/* ====================== 4. CLINICAL SERVICES ====================== */}
+      <section className="py-20 sm:py-28 bg-white">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+            <div>
+              <span className="section-subtitle">Specialized Treatments</span>
+              <h2 className="mt-4 text-slate-900">
+                Comprehensive recovery protocols
+              </h2>
+              <p className="mt-2 text-base text-slate-600 max-w-xl">
+                Targeted physical therapies engineered to accelerate rehabilitation, eliminate pain, and restore active lifestyle.
+              </p>
+            </div>
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 rounded-[30px] bg-[#0052FF] px-6 py-[18px] text-[12px] font-medium uppercase tracking-[2px] text-white transition-all hover:bg-[#0046E0]"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-700 transition-colors hover:border-[#0052FF] hover:bg-blue-50/50 hover:text-[#0052FF]"
             >
-              View all services
-              <ArrowRight className="h-4 w-4" />
+              View All 14 Services
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {clinicalServices.map((service) => {
+              const Icon = service.icon;
+              return (
+                <Link
+                  key={service.id}
+                  href={`/services/${service.id}`}
+                  className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-8 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/10"
+                >
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-[#0052FF] transition-colors group-hover:bg-[#0052FF] group-hover:text-white">
+                        <Icon className="h-6 w-6" />
+                      </div>
+                      <span className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold text-slate-600 group-hover:bg-blue-50 group-hover:text-[#0052FF]">
+                        {service.category}
+                      </span>
+                    </div>
+
+                    <h3 className="mt-6 text-lg font-bold text-slate-900 transition-colors group-hover:text-[#0052FF]">
+                      {service.title}
+                    </h3>
+                    <p className="mt-2.5 text-sm leading-relaxed text-slate-600">
+                      {service.desc}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 flex items-center gap-1.5 text-xs font-semibold text-[#0052FF] pt-4 border-t border-slate-100">
+                    <span>Clinical protocol details</span>
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ====================== 5. FACILITY & TECHNOLOGY GALLERY ====================== */}
+      <section className="py-20 sm:py-28 bg-slate-50/70 border-y border-slate-100">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="section-subtitle">Clinic Environment</span>
+            <h2 className="mt-4 text-slate-900">
+              State-of-the-art rehabilitation facility
+            </h2>
+            <p className="mt-3 text-base text-slate-600">
+              Equipped with modern therapeutic modalities, private consultation suites, and dedicated athletic training spaces in Vijayanagar II Stage, Mysuru.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {galleryHighlights.map((item, idx) => (
+              <div
+                key={idx}
+                className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              >
+                <div className="relative h-60 w-full overflow-hidden bg-slate-100">
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <span className="inline-block rounded-md bg-white/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-md">
+                      {item.tag}
+                    </span>
+                    <h4 className="mt-1 text-sm font-bold text-white leading-snug">
+                      {item.title}
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link
+              href="/gallery"
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0052FF] hover:underline"
+            >
+              View complete photo gallery
+              <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ====================== PRICING ====================== */}
-      <section className="py-[100px]">
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="mb-14 text-center">
-            <span className="section-subtitle">Pricing & plans</span>
-            <h2 className="mt-4">Affordable care, transparent pricing</h2>
+      {/* ====================== 6. CLINICAL PRICING & PACKAGES ====================== */}
+      <section className="py-20 sm:py-28 bg-white">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="section-subtitle">Transparent Care</span>
+            <h2 className="mt-4 text-slate-900">
+              Clear, structured care packages
+            </h2>
+            <p className="mt-3 text-base text-slate-600">
+              No hidden fees. Every session is designed for measurable recovery milestones under expert clinical supervision.
+            </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {previewPlans.map((plan) => (
+
+          <div className="mt-14 grid gap-8 lg:grid-cols-3">
+            {transparentPlans.map((plan) => (
               <div
                 key={plan.name}
-                className={`relative rounded-[20px] bg-[#EEF1E4] p-8 ${
-                  plan.popular ? "ring-2 ring-primary" : ""
+                className={`relative flex flex-col justify-between rounded-3xl p-8 transition-all duration-300 ${
+                  plan.popular
+                    ? "border-2 border-[#0052FF] bg-white shadow-xl shadow-blue-500/10"
+                    : "border border-slate-200 bg-slate-50/60 shadow-xs hover:border-slate-300 hover:bg-white hover:shadow-lg"
                 }`}
               >
                 {plan.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-[10px] font-medium uppercase tracking-[2px] text-white">
-                    Most Popular
+                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-linear-to-r from-[#0052FF] to-[#0042D1] px-4 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-md">
+                    {plan.badge}
                   </span>
                 )}
-                <h3 className="text-[20px] font-medium text-[#343434]">{plan.name}</h3>
-                <p className="mt-1 text-sm text-[#343434]/60">{plan.subtitle}</p>
-                <p className="mt-4 text-xs text-[#343434]/50">Available on request</p>
-                <hr className="my-6 border-[#343434]/10" />
-                <ul className="space-y-4">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      <span className="text-sm font-medium text-[#343434]/80">
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/contact"
-                  className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-[30px] bg-[#0052FF] px-6 py-[14px] text-[12px] font-medium uppercase tracking-[2px] text-white transition-all hover:bg-[#0046E0]"
-                >
-                  Contact for pricing
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
+
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-[#0052FF]">
+                      {plan.badge}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-2 text-xl font-bold text-slate-900">
+                    {plan.name}
+                  </h3>
+                  <p className="mt-1 text-xs text-slate-500">
+                    {plan.subtitle}
+                  </p>
+
+                  <div className="my-6 border-t border-slate-200/80" />
+
+                  <ul className="space-y-3.5">
+                    {plan.features.map((feat) => (
+                      <li key={feat} className="flex items-start gap-3">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#0052FF]" />
+                        <span className="text-xs font-medium text-slate-700 leading-relaxed">
+                          {feat}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-slate-100">
+                  <Link
+                    href="/book-appointment"
+                    className={`inline-flex w-full items-center justify-center gap-2 rounded-full py-3.5 text-xs font-bold uppercase tracking-wider transition-all ${
+                      plan.popular
+                        ? "bg-linear-to-r from-[#0052FF] to-[#0042D1] text-white shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                        : "border border-slate-300 bg-white text-slate-800 hover:bg-slate-50 hover:border-slate-400"
+                    }`}
+                  >
+                    Schedule Assessment
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ====================== TESTIMONIALS ====================== */}
-      <section className="bg-[#EEF1E4] py-[100px]">
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="mb-14 text-center">
-            <span className="section-subtitle">Patient stories</span>
-            <h2 className="mt-4">What our patients say</h2>
+      {/* ====================== 7. PATIENT SUCCESS STORIES ====================== */}
+      <section className="py-20 sm:py-28 bg-slate-50/70 border-t border-slate-100">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="section-subtitle">Real Patient Outcomes</span>
+            <h2 className="mt-4 text-slate-900">
+              Recovered patients across Mysuru
+            </h2>
+            <p className="mt-3 text-base text-slate-600">
+              From elite marathoners to post-surgery rehabilitation, hear directly from patients who regained pain-free mobility.
+            </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
+
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
             {testimonials.slice(0, 3).map((t) => (
-              <div key={t.id} className="rounded-[20px] bg-white p-8">
-                <div className="flex gap-1">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`h-4 w-4 ${
-                        i < t.rating ? "fill-primary text-primary" : "text-border"
-                      }`}
-                    />
-                  ))}
+              <div
+                key={t.id}
+                className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-7 shadow-xs transition-all hover:shadow-lg hover:border-blue-200"
+              >
+                <div>
+                  <div className="flex items-center gap-1 text-amber-400">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-amber-400" />
+                    ))}
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-slate-700 italic">
+                    &ldquo;{t.text}&rdquo;
+                  </p>
                 </div>
-                <p className="mt-4 text-[14px] leading-relaxed text-[#343434]/80">
-                  &ldquo;{t.text}&rdquo;
-                </p>
-                <div className="mt-6 flex items-center gap-3 border-t border-[#343434]/10 pt-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#EEF1E4] text-sm font-medium text-primary">
+
+                <div className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 font-bold text-[#0052FF]">
                     {t.name.charAt(0)}
                   </div>
-                  <p className="text-sm font-medium text-[#343434]">{t.name}</p>
+                  <div>
+                    <h4 className="text-sm font-bold text-slate-900">{t.name}</h4>
+                    <span className="text-[11px] font-medium text-slate-500">
+                      Verified Patient • Mysuru
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
-          <div className="mt-12 text-center">
+
+          <div className="mt-10 text-center">
             <Link
               href="/testimonials"
-              className="inline-flex items-center gap-2 rounded-[30px] bg-[#0052FF] px-6 py-[14px] text-[12px] font-medium uppercase tracking-[2px] text-white transition-all hover:bg-[#0046E0]"
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0052FF] hover:underline"
             >
-              View all testimonials
-              <ArrowRight className="h-4 w-4" />
+              Read more patient testimonials
+              <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ====================== CTA ====================== */}
-      <section
-        className="relative overflow-hidden bg-[#0052FF] py-[100px]"
-      >
-        <div className="mx-auto max-w-[1240px] px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-white">Ready to start your journey?</h2>
-          <p className="mx-auto mt-4 max-w-xl text-[17px] text-white/70">
-            Get in touch with us today and take the first step toward recovery.
+      {/* ====================== 8. HIGH-CONVERTING BOTTOM CTA ====================== */}
+      <section className="relative overflow-hidden bg-slate-950 py-20 sm:py-24 text-white">
+        <div className="absolute inset-0 bg-linear-to-r from-blue-900/40 via-slate-900 to-slate-950" />
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 h-96 w-96 rounded-full bg-blue-600/20 blur-3xl" />
+
+        <div className="relative z-10 mx-auto max-w-[1280px] px-4 text-center sm:px-6 lg:px-8">
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/20 px-4 py-1.5 text-xs font-semibold text-blue-200">
+            <Clock className="h-3.5 w-3.5 text-[#00D2FF]" />
+            <span>Open Mon–Sat: 09:00 AM – 09:00 PM</span>
+          </div>
+
+          <h2 className="mt-6 text-white text-3xl sm:text-4xl font-bold tracking-tight">
+            Ready to live without pain and regain your mobility?
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-xl text-base text-slate-300">
+            Take the first step today. Book your clinical consultation with Dr. Pradeep &amp; the specialized physiotherapy team at VO2 Max.
           </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
+
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link
+              href="/book-appointment"
+              className="inline-flex items-center gap-2.5 rounded-full bg-linear-to-r from-[#0052FF] to-[#0042D1] px-7 py-4 text-xs font-bold uppercase tracking-wider text-white shadow-xl shadow-blue-500/30 transition-all hover:shadow-2xl hover:shadow-blue-500/40 hover:-translate-y-0.5"
+            >
+              <Calendar className="h-4 w-4" />
+              Book Appointment Now
+            </Link>
             <a
-              href={`https://wa.me/${clinic.whatsapp}`}
+              href={`https://wa.me/${clinic.whatsapp}?text=Hi%20VO2%20Max,%20I'd%20like%20to%20consult%20regarding%20physiotherapy`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-[30px] bg-white px-6 py-[18px] text-[12px] font-medium uppercase tracking-[2px] text-[#343434] transition-all hover:bg-white/90"
+              className="inline-flex items-center gap-2.5 rounded-full border border-emerald-400/40 bg-emerald-500/15 px-6 py-4 text-xs font-bold uppercase tracking-wider text-emerald-300 backdrop-blur-md transition-all hover:bg-emerald-500/25"
             >
-              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              WhatsApp us
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Chat on WhatsApp
             </a>
-            <a
-              href={`tel:${clinic.phone}`}
-              className="inline-flex items-center gap-2 rounded-[30px] border border-white/30 px-6 py-[18px] text-[12px] font-medium uppercase tracking-[2px] text-white transition-all hover:bg-white/10"
-            >
-              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-              Call now
-            </a>
+          </div>
+
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400">
+            <span className="flex items-center gap-1.5">
+              <MapPin className="h-3.5 w-3.5 text-[#0052FF]" />
+              H1 Srihari Medical Trust, Vijayanagar II Stage, Mysuru
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Phone className="h-3.5 w-3.5 text-[#0052FF]" />
+              +91 94801 66770
+            </span>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

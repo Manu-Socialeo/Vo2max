@@ -338,42 +338,46 @@ export default async function ServicePage({ params }: Props) {
   };
 
   return (
-    <>
+    <div className="bg-white text-slate-800">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#EEF1E4] via-white to-[#EEF1E4] pb-20 pt-28">
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="section-subtitle justify-center">Our Services</span>
-            <h1 className="mt-4">{service.title}</h1>
-            <p className="mt-4 text-lg text-foreground/70">{service.description}</p>
+      <section className="relative overflow-hidden bg-slate-900 py-16 sm:py-24 text-white">
+        <div className="absolute inset-0 bg-linear-to-r from-blue-950 via-slate-900 to-slate-950 opacity-90" />
+        <div className="relative z-10 mx-auto max-w-[1280px] px-4 text-center sm:px-6 lg:px-8">
+          <span className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/15 px-4 py-1.5 text-xs font-semibold text-blue-200">
+            Specialized Clinical Protocol
+          </span>
+          <h1 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-5xl">{service.title}</h1>
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base">{service.description}</p>
+        </div>
+      </section>
+
+      <section className="py-20 sm:py-28 bg-white">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl">
+            <span className="section-subtitle">Clinical Overview</span>
+            <h2 className="mt-4 text-slate-900">About this treatment</h2>
+            <p className="mt-6 text-sm leading-relaxed text-slate-600 sm:text-base">{content?.description}</p>
+            <div className="mt-4">
+              <Link href={"/blog/" + slug} className="text-xs font-bold text-[#0052FF] hover:underline">Read our clinical guide on {service.title} &rarr;</Link>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24">
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+      <section className="py-20 sm:py-28 bg-slate-50/70 border-y border-slate-100">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
-            <h2>About This Service</h2>
-            <p className="mt-6 leading-relaxed text-foreground/70">{content?.description}</p>
-            <Link href={"/blog/" + slug} className="text-primary underline hover:text-[#0046E0]">Read our blog on {service.title}</Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#EEF1E4] py-24">
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl">
-            <span className="section-subtitle">Why Choose Us</span>
-            <h2 className="mt-4">Key Benefits</h2>
+            <span className="section-subtitle">Treatment Outcomes</span>
+            <h2 className="mt-4 text-slate-900">Key Clinical Benefits</h2>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2">
               {content?.benefits.map((benefit) => (
-                <li key={benefit} className="flex items-start gap-3 rounded-[20px] bg-white p-5">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                    <Check className="h-3.5 w-3.5 text-primary" />
+                <li key={benefit} className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-xs">
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-50 text-[#0052FF]">
+                    <Check className="h-3.5 w-3.5" />
                   </span>
-                  <span className="text-sm font-medium text-foreground/80">{benefit}</span>
+                  <span className="text-xs font-semibold text-slate-700 sm:text-sm">{benefit}</span>
                 </li>
               ))}
             </ul>
@@ -381,21 +385,21 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      <section className="py-24">
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+      <section className="py-20 sm:py-28 bg-white">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
-            <span className="section-subtitle">Perfect For</span>
-            <h2 className="mt-4">Who Is This For?</h2>
-            <p className="mt-6 leading-relaxed text-foreground/70">{content?.audience}</p>
+            <span className="section-subtitle">Target Candidates</span>
+            <h2 className="mt-4 text-slate-900">Who is this protocol for?</h2>
+            <p className="mt-6 text-sm leading-relaxed text-slate-600 sm:text-base">{content?.audience}</p>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#EEF1E4] py-24">
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+      <section className="py-20 sm:py-28 bg-slate-50/70 border-t border-slate-100">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
-            <span className="section-subtitle">Questions</span>
-            <h2 className="mt-4">Frequently Asked Questions</h2>
+            <span className="section-subtitle">FAQ</span>
+            <h2 className="mt-4 text-slate-900">Frequently Asked Questions</h2>
             <div className="mt-8">
               <FaqAccordion items={content?.faqs ?? []} />
             </div>
@@ -403,28 +407,37 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0052FF] via-[#2d3024] to-[#1a1a1a] py-24">
-        <div className="mx-auto max-w-[1240px] px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-white">Ready to Get Started?</h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/70">
-            Book a consultation with <strong className="text-white">Dr. Pradeep Kumar M N</strong> at our Vijayanagar II Stage, Mysuru center.
+      <section className="relative overflow-hidden bg-slate-950 py-20 text-white">
+        <div className="absolute inset-0 bg-linear-to-r from-blue-900/40 via-slate-900 to-slate-950" />
+        <div className="relative z-10 mx-auto max-w-[1280px] px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-white sm:text-4xl">Ready to Begin Your Recovery?</h2>
+          <p className="mx-auto mt-4 max-w-xl text-xs text-slate-300 sm:text-sm">
+            Book a clinical consultation with Dr. Pradeep Kumar &amp; the specialized team at VO2 Max Mysuru.
           </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <a href={`https://wa.me/${clinic.whatsapp}?text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment`} target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-2 !bg-[#0052FF] !text-white hover:!bg-[#0046E0]" data-conversion="whatsapp_click" data-conversion-label={`Service Page ${service.title}`}>
-              <MessageCircle className="h-4 w-4" /> WhatsApp us
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <a
+              href={`https://wa.me/${clinic.whatsapp}?text=Hi%20VO2%20Max,%20I'd%20like%20to%20consult%20regarding%20${encodeURIComponent(service.title)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-500/15 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-emerald-300 backdrop-blur-md hover:bg-emerald-500/25"
+            >
+              <MessageCircle className="h-4 w-4" /> WhatsApp Us
             </a>
-            <a href={`tel:${clinic.phone}`} className="btn-primary inline-flex items-center gap-2 !bg-[#0052FF] !text-white hover:!bg-[#0046E0]" data-conversion="call_click" data-conversion-label={`Service Page ${service.title}`}>
-              <Phone className="h-4 w-4" /> Call now
+            <a
+              href={`tel:${clinic.phone}`}
+              className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md hover:bg-white/20"
+            >
+              <Phone className="h-4 w-4 text-[#00D2FF]" /> Call {clinic.phone}
             </a>
-            <Link href="/book-appointment" className="btn-outline !border-white/30 !text-white hover:!border-[#0052FF] hover:!bg-[#0052FF] hover:!text-white" data-conversion="appointment_click" data-conversion-label={`Service Page ${service.title}`}>
-              Book appointment <ArrowRight className="h-4 w-4" />
+            <Link
+              href="/book-appointment"
+              className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-[#0052FF] to-[#0042D1] px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-md hover:shadow-lg"
+            >
+              Book Assessment <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <p className="mt-6 text-sm text-white/50">
-            Visit us at {clinic.addressShort}, {clinic.landmark}, {clinic.city}. | <Link href="/team/pradeep" className="text-white/70 underline hover:text-white">Meet Dr. Pradeep</Link>
-          </p>
         </div>
       </section>
-    </>
+    </div>
   );
 }

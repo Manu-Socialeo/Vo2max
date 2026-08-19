@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, Check, Target, Eye, Heart, Users } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Check, Target, Eye, Heart, Users, Award, ShieldCheck, CheckCircle2, Phone, Calendar } from "lucide-react";
 import { doctors, clinic } from "@/lib/clinic";
 import AnimatedCounter from "@/components/AnimatedCounter";
 
@@ -24,119 +25,84 @@ const breadcrumbSchema = {
   ],
 };
 
-const medicalClinicSchema = {
-  "@context": "https://schema.org",
-  "@type": "MedicalClinic",
-  name: "VO2 Max Physiotherapy Rehabilitation & Fitness Center",
-  url: "https://vo2max.in",
-  telephone: "+919480166770",
-  email: "pinakinphysio@yahoo.com",
-  founder: [
-    { "@type": "Person", name: "Dr. Pradeep Kumar M N", jobTitle: "Co-Founder and Head Physiotherapist" },
-    { "@type": "Person", name: "Dr. Pinakin Prakash Ayare", jobTitle: "Co-Founder" },
-  ],
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "H1 Shrihari Medical Trust, opposite to Learner's PU College",
-    addressLocality: "Vijayanagar II Stage, Mysuru",
-    addressRegion: "Karnataka",
-    postalCode: "570017",
-    addressCountry: "IN",
-  },
-  openingHoursSpecification: [{
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    opens: "09:00",
-    closes: "21:00",
-  }],
-  sameAs: [
-    "https://www.facebook.com/people/VO2-Max-Physiotherapy-Rehabilitation-Fitness/61574654481980/",
-    "https://www.linkedin.com/company/vo2-max-physiotherapy-rehabilitation-fitness",
-    "https://www.instagram.com/vo2max_prf/",
-  ],
-};
-
 const values = [
   {
     icon: Target,
-    title: "Our Mission",
+    title: "Evidence-Based Precision",
     description:
-      "To provide accessible, high-quality physiotherapy and rehabilitation services that empower individuals to regain their strength, mobility, and confidence.",
+      "Every treatment regimen is grounded in physical therapy science, objective biomechanical assessments, and targeted progress tracking.",
   },
   {
     icon: Eye,
-    title: "Our Vision",
+    title: "Patient-Centric Dedication",
     description:
-      "To be Mysuru's most trusted physiotherapy center, setting the standard for compassionate care and innovative rehabilitation techniques.",
+      "We design custom recovery roadmaps tailored to your unique lifestyle, whether resuming daily walks or training for international marathons.",
   },
   {
     icon: Heart,
-    title: "Our Values",
+    title: "Compassionate Care",
     description:
-      "Compassion, integrity, and excellence guide every treatment plan we create and every interaction we have with our patients.",
+      "A warm, supportive, and professional clinical environment where your recovery comfort, dignity, and long-term health come first.",
   },
 ];
 
 export default function About() {
   return (
-    <>
+    <div className="bg-white text-slate-800">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalClinicSchema) }} />
 
       {/* Hero */}
-      <section className="relative flex items-center overflow-hidden bg-gradient-to-br from-[#0052FF] via-[#2d3024] to-[#1a1a1a] py-24">
-        <div className="mx-auto w-full max-w-[1240px] px-4 text-center sm:px-6 lg:px-8">
-          <span className="inline-flex items-center gap-2.5 text-[13px] font-medium uppercase tracking-[2px] text-white before:inline-block before:h-[2px] before:w-6 before:bg-white">
-            About us
-          </span>
-          <h1 className="mt-6 text-white">About Us</h1>
+      <section className="relative overflow-hidden bg-slate-900 py-16 sm:py-24 text-white">
+        <div className="absolute inset-0 bg-linear-to-r from-blue-950 via-slate-900 to-slate-950 opacity-90" />
+        <div className="relative z-10 mx-auto max-w-[1280px] px-4 text-center sm:px-6 lg:px-8">
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/15 px-4 py-1.5 text-xs font-semibold text-blue-200">
+            <Award className="h-3.5 w-3.5 text-[#00D2FF]" />
+            <span>Dedicated to Clinical Excellence</span>
+          </div>
+          <h1 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-5xl">
+            About VO2 Max Physiotherapy &amp; Rehab
+          </h1>
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base">
+            Founded by Senior Physiotherapists Dr. Pradeep Kumar and Dr. Pinakin Prakash, bringing 18+ years of dedicated clinical care to Mysuru.
+          </p>
         </div>
       </section>
 
       {/* Story */}
-      <section className="py-24">
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+      <section className="py-20 sm:py-28 bg-white">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
-              <span className="section-subtitle">Our story</span>
-              <h2 className="mt-4 max-w-xl">
-                Comprehensive care for your{" "}
-                <span className="text-primary">recovery journey</span>
+              <span className="section-subtitle">Our Clinical Heritage</span>
+              <h2 className="mt-4 text-slate-900">
+                Empowering movement, restoring function, accelerating recovery
               </h2>
-              <p className="mt-6 leading-relaxed text-foreground/70">
-                At VO2 Max Physiotherapy Rehabilitation & Fitness Center, we
-                believe everyone deserves access to expert physiotherapy care.
-                Founded by Dr. Pradeep Kumar M N and Dr. Pinakin Prakash Ayare,
-                our center combines decades of clinical experience with a
-                genuine passion for helping patients recover.
+              <p className="mt-6 text-sm leading-relaxed text-slate-600 sm:text-base">
+                At VO2 Max Physiotherapy Rehabilitation &amp; Fitness Center, we believe that effective rehabilitation requires a seamless fusion of hands-on manual expertise, modern therapeutic modalities, and progressive functional exercise.
               </p>
-              <p className="mt-4 leading-relaxed text-foreground/70">
-                From sports injuries to post-surgical rehabilitation, chronic
-                pain management to fitness coaching — our team delivers
-                personalized care in a supportive, professional environment.
+              <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+                From competitive athletic injuries and post-surgical orthopedics to chronic spine pain and cardiac rehabilitation, our center provides compassionate, results-driven clinical care in Mysuru.
               </p>
-              <ul className="mt-8 space-y-4">
+              <ul className="mt-8 space-y-3.5">
                 {[
-                  "18+ years of clinical expertise",
-                  "State-of-the-art rehabilitation equipment",
-                  "Patient-first treatment philosophy",
+                  "18+ years of clinical specialization in Mysuru",
+                  "Advanced electrotherapy & biomechanical exercise equipment",
+                  "Personalized recovery protocols with monitored milestones",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                      <Check className="h-3.5 w-3.5 text-primary" />
-                    </span>
-                    <span className="text-sm font-medium text-foreground/80">
+                    <CheckCircle2 className="h-4 w-4 shrink-0 text-[#0052FF]" />
+                    <span className="text-xs font-semibold text-slate-700 sm:text-sm">
                       {item}
                     </span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="overflow-hidden rounded-[20px]">
+            <div className="overflow-hidden rounded-3xl border border-slate-200 shadow-xl shadow-slate-900/5">
               <img
                 src="/images/about-img.jpg"
                 alt="VO2 Max Physiotherapy Rehabilitation & Fitness Center in Mysuru"
-                className="aspect-[4/3] w-full object-cover"
+                className="aspect-4/3 w-full object-cover"
                 loading="lazy"
               />
             </div>
@@ -145,20 +111,20 @@ export default function About() {
       </section>
 
       {/* Stats */}
-      <section className="bg-[#EEF1E4] py-24">
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-slate-50/80 border-y border-slate-100">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <div className="grid gap-8 text-center sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { values: [20, 35, 500, 98], suffix: "+", label: "Years of experience" },
-              { values: [500, 20, 35, 98], suffix: "+", label: "Patients treated" },
-              { values: [35, 500, 20, 98], suffix: "+", label: "Therapy techniques" },
-              { values: [98, 35, 500, 20], suffix: "%", label: "Success rate" },
+              { values: [20, 35, 500, 98], suffix: "+", label: "Years Combined Clinical Mastery" },
+              { values: [500, 20, 35, 98], suffix: "+", label: "Patients Successfully Rehabilitated" },
+              { values: [35, 500, 20, 98], suffix: "+", label: "Advanced Therapeutic Techniques" },
+              { values: [98, 35, 500, 20], suffix: "%", label: "Patient Satisfaction & Mobility Rate" },
             ].map((stat) => (
-              <div key={stat.label}>
-                <div className="text-5xl font-medium text-primary lg:text-6xl">
+              <div key={stat.label} className="rounded-2xl bg-white p-6 border border-slate-200/80 shadow-xs">
+                <div className="text-4xl font-bold text-[#0052FF] lg:text-5xl">
                   <AnimatedCounter values={stat.values} suffix={stat.suffix} />
                 </div>
-                <p className="mt-3 text-sm text-foreground/70">
+                <p className="mt-2 text-xs font-medium text-slate-600">
                   {stat.label}
                 </p>
               </div>
@@ -168,74 +134,73 @@ export default function About() {
       </section>
 
       {/* Team Preview */}
-      <section className="py-24">
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="mb-14 text-center">
-            <span className="section-subtitle">Our team</span>
-            <h2 className="mt-4">Meet our specialists</h2>
-            <p className="mx-auto mt-4 max-w-xl text-foreground/70">
-              Our experienced physiotherapists are dedicated to providing you
-              with the highest standard of care.
+      <section className="py-20 sm:py-28 bg-white">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="section-subtitle">Our Leadership</span>
+            <h2 className="mt-4 text-slate-900">Meet our chief specialists</h2>
+            <p className="mx-auto mt-3 text-sm text-slate-600 sm:text-base">
+              Direct, hands-on clinical care led by our founders with postgraduate master&apos;s degrees in physical therapy.
             </p>
           </div>
-          <div className="grid gap-8 sm:grid-cols-2">
+
+          <div className="mt-12 grid gap-8 sm:grid-cols-2">
             {doctors.map((doctor) => (
               <Link
                 key={doctor.id}
                 href={`/team/${doctor.id}`}
-                className="group rounded-[20px] border border-border/50 bg-white p-8 transition-all hover:shadow-lg"
+                className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-blue-200 hover:-translate-y-1"
               >
-                <div className="mb-5 aspect-square w-full max-w-[200px] overflow-hidden rounded-[20px]">
+                <div className="mb-6 aspect-square w-full max-w-[180px] overflow-hidden rounded-2xl bg-blue-50/80 border border-blue-100 shadow-inner">
                   <img
                     src={doctor.image}
                     alt={doctor.name}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover object-top"
                     loading="lazy"
                   />
                 </div>
-                <h3 className="group-hover:text-primary">{doctor.name}</h3>
-                <p className="mt-1 text-sm font-medium text-primary">
-                  {doctor.title}
+                <span className="rounded-full bg-blue-50 px-2.5 py-1 text-[11px] font-bold text-[#0052FF]">
+                  {doctor.qualifications}
+                </span>
+                <h3 className="mt-3 text-lg font-bold text-slate-900 group-hover:text-[#0052FF] transition-colors">
+                  {doctor.name}
+                </h3>
+                <p className="mt-1 text-xs font-medium text-slate-500">
+                  {doctor.title} • {doctor.experience}
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-foreground/70 line-clamp-3">
+                <p className="mt-3 text-xs leading-relaxed text-slate-600 line-clamp-3">
                   {doctor.bio}
                 </p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
-                  View profile
-                  <ArrowRight className="h-3.5 w-3.5" />
+                <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-[#0052FF]">
+                  View full credentials
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                 </span>
               </Link>
             ))}
-          </div>
-          <div className="mt-10 text-center">
-            <Link href="/team" className="btn-primary inline-flex">
-              Meet the full team
-              <ArrowRight className="h-4 w-4" />
-            </Link>
           </div>
         </div>
       </section>
 
       {/* Values */}
-      <section className="bg-[#EEF1E4] py-24">
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="mb-14 text-center">
-            <span className="section-subtitle">Why choose us</span>
-            <h2 className="mt-4">Our core principles</h2>
+      <section className="py-20 bg-slate-50/80 border-t border-slate-100">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="section-subtitle">Clinical Philosophy</span>
+            <h2 className="mt-4 text-slate-900">Our core standards</h2>
           </div>
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="mt-12 grid gap-8 md:grid-cols-3">
             {values.map((item) => {
               const Icon = item.icon;
               return (
                 <div
                   key={item.title}
-                  className="rounded-[20px] bg-white p-8 transition-all hover:shadow-lg"
+                  className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xs transition-all hover:shadow-lg"
                 >
-                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-[#EEF1E4]">
-                    <Icon className="h-6 w-6 text-primary" />
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-[#0052FF]">
+                    <Icon className="h-6 w-6" />
                   </div>
-                  <h3 className="mb-3">{item.title}</h3>
-                  <p className="text-sm leading-relaxed text-foreground/70">
+                  <h3 className="text-base font-bold text-slate-900">{item.title}</h3>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-600">
                     {item.description}
                   </p>
                 </div>
@@ -246,29 +211,33 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0052FF] via-[#2d3024] to-[#1a1a1a] py-24">
-        <div className="mx-auto max-w-[1240px] px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-white">
-            Ready to begin your recovery?
+      <section className="relative overflow-hidden bg-slate-950 py-20 text-white">
+        <div className="absolute inset-0 bg-linear-to-r from-blue-900/40 via-slate-900 to-slate-950" />
+        <div className="relative z-10 mx-auto max-w-[1280px] px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-white sm:text-4xl">
+            Begin Your Recovery Journey Today
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/70">
-            Book a consultation with our expert team and take the first step
-            toward better health.
+          <p className="mx-auto mt-4 max-w-xl text-xs text-slate-300 sm:text-sm">
+            Book an assessment with Dr. Pradeep, Dr. Pinakin &amp; the specialized physiotherapy team at VO2 Max.
           </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link href="/book-appointment" className="btn-primary inline-flex">
-              Book a consultation
-              <ArrowRight className="h-4 w-4" />
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link
+              href="/book-appointment"
+              className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-[#0052FF] to-[#0042D1] px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-md hover:shadow-lg hover:-translate-y-0.5"
+            >
+              <Calendar className="h-4 w-4" />
+              Book Assessment
             </Link>
             <a
               href={`tel:${clinic.phone}`}
-              className="btn-primary inline-flex !bg-[#0052FF] !text-white hover:!bg-[#0046E0]"
+              className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md hover:bg-white/20"
             >
-              Call us
+              <Phone className="h-4 w-4 text-[#00D2FF]" />
+              Call {clinic.phone}
             </a>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
