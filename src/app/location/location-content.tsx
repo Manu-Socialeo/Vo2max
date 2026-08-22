@@ -12,7 +12,7 @@ export default function LocationContent() {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             name: clinic.name,
-            url: "https://vo2max.in",
+            url: "https://vo2maxclinic.vercel.app",
             telephone: clinic.phone,
             email: clinic.email,
             address: {

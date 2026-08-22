@@ -6,11 +6,11 @@ import { clinic } from "@/lib/clinic";
 export const metadata: Metadata = {
   title: "Privacy Policy | VO2 Max Physiotherapy Mysuru",
   description: "Privacy policy for VO2 Max Physiotherapy Rehabilitation & Fitness Center in Mysuru. Learn how we collect, use, and protect your personal information.",
-  alternates: { canonical: "https://vo2max.in/privacy-policy" },
+  alternates: { canonical: "https://vo2maxclinic.vercel.app/privacy-policy" },
   openGraph: {
     title: "Privacy Policy | VO2 Max Physiotherapy Mysuru",
     description: "Privacy policy for VO2 Max Physiotherapy Rehabilitation & Fitness Center in Mysuru. Learn how we collect, use, and protect your personal information.",
-    url: "https://vo2max.in/privacy-policy",
+    url: "https://vo2maxclinic.vercel.app/privacy-policy",
     type: "website",
   },
 };
@@ -19,8 +19,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2max.in" },
-    { "@type": "ListItem", position: 2, name: "Privacy Policy", item: "https://vo2max.in/privacy-policy" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2maxclinic.vercel.app" },
+    { "@type": "ListItem", position: 2, name: "Privacy Policy", item: "https://vo2maxclinic.vercel.app/privacy-policy" },
   ],
 };
 

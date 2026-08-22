@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/admin/", "/_next/"],
     },
-    sitemap: "https://vo2max.in/sitemap.xml",
+    sitemap: "https://vo2maxclinic.vercel.app/sitemap.xml",
   };
 }

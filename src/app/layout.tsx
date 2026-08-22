@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   description:
     "Expert physiotherapy, rehabilitation & fitness in Mysuru. Regain strength, restore movement with Dr. Pradeep & team.",
-  metadataBase: new URL("https://vo2max.in"),
+  metadataBase: new URL("https://vo2maxclinic.vercel.app"),
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     images: ["/images/hero-bg.jpg"],
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://vo2max.in", languages: { "en-IN": "https://vo2max.in" } },
+  alternates: { canonical: "https://vo2maxclinic.vercel.app", languages: { "en-IN": "https://vo2maxclinic.vercel.app" } },
 };
 
 export default function RootLayout({
@@ -55,7 +55,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "MedicalClinic",
               name: "VO2 Max Physiotherapy Rehabilitation & Fitness Center",
-              url: "https://vo2max.in",
+              url: "https://vo2maxclinic.vercel.app",
               telephone: "+919480166770",
               email: "pinakinphysio@yahoo.com",
               founder: [

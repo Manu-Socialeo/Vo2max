@@ -6,11 +6,11 @@ import { services, clinic } from "@/lib/clinic";
 export const metadata: Metadata = {
   title: "Our Services | VO2 Max Physiotherapy Mysuru",
   description: "Expert physiotherapy, rehabilitation, sports rehab, cardiac rehab, weight loss, athletic training, and more in Mysuru.",
-  alternates: { canonical: "https://vo2max.in/services" },
+  alternates: { canonical: "https://vo2maxclinic.vercel.app/services" },
   openGraph: {
     title: "Our Services | VO2 Max Physiotherapy Mysuru",
     description: "Expert physiotherapy, rehabilitation, sports rehab, and more services at VO2 Max in Vijayanagar, Mysuru.",
-    url: "https://vo2max.in/services",
+    url: "https://vo2maxclinic.vercel.app/services",
   },
 };
 
@@ -22,8 +22,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2max.in" },
-    { "@type": "ListItem", position: 2, name: "Services", item: "https://vo2max.in/services" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2maxclinic.vercel.app" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://vo2maxclinic.vercel.app/services" },
   ],
 };
 
@@ -34,7 +34,7 @@ const itemListSchema = {
     "@type": "ListItem",
     position: i + 1,
     name: s.title,
-    url: `https://vo2max.in/services/${s.id}`,
+    url: `https://vo2maxclinic.vercel.app/services/${s.id}`,
   })),
 };
 

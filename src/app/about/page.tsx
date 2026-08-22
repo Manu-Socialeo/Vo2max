@@ -7,11 +7,11 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 export const metadata = {
   title: "About Us | VO2 Max Physiotherapy Mysuru",
   description: "Learn about VO2 Max Physiotherapy Rehabilitation & Fitness Center in Mysuru. Founded by Dr. Pradeep Kumar M N and Dr. Pinakin Prakash Ayare with 18+ years of clinical experience.",
-  alternates: { canonical: "https://vo2max.in/about" },
+  alternates: { canonical: "https://vo2maxclinic.vercel.app/about" },
   openGraph: {
     title: "About Us | VO2 Max Physiotherapy Mysuru",
     description: "Learn about VO2 Max Physiotherapy in Mysuru. Founded by Dr. Pradeep and Dr. Pinakin with 18+ years of clinical experience.",
-    url: "https://vo2max.in/about",
+    url: "https://vo2maxclinic.vercel.app/about",
     type: "website",
   },
 };
@@ -20,8 +20,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2max.in" },
-    { "@type": "ListItem", position: 2, name: "About Us", item: "https://vo2max.in/about" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2maxclinic.vercel.app" },
+    { "@type": "ListItem", position: 2, name: "About Us", item: "https://vo2maxclinic.vercel.app/about" },
   ],
 };
 

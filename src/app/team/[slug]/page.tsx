@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description: doctor.bio.slice(0, 160),
-    alternates: { canonical: `https://vo2max.in/team/${slug}` },
-    openGraph: { title, description: doctor.bio, url: `https://vo2max.in/team/${slug}` },
+    alternates: { canonical: `https://vo2maxclinic.vercel.app/team/${slug}` },
+    openGraph: { title, description: doctor.bio, url: `https://vo2maxclinic.vercel.app/team/${slug}` },
   };
 }
 
@@ -59,9 +59,9 @@ export default async function TeamMemberPage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2max.in" },
-      { "@type": "ListItem", position: 2, name: "Team", item: "https://vo2max.in/team" },
-      { "@type": "ListItem", position: 3, name: doctor.name, item: `https://vo2max.in/team/${slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2maxclinic.vercel.app" },
+      { "@type": "ListItem", position: 2, name: "Team", item: "https://vo2maxclinic.vercel.app/team" },
+      { "@type": "ListItem", position: 3, name: doctor.name, item: `https://vo2maxclinic.vercel.app/team/${slug}` },
     ],
   };
 

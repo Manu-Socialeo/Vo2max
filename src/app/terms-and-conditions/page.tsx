@@ -5,11 +5,11 @@ import { ArrowLeft } from "lucide-react";
 export const metadata: Metadata = {
   title: "Terms & Conditions | VO2 Max Physiotherapy Mysuru",
   description: "Terms and conditions for using the website and services of VO2 Max Physiotherapy in Mysuru.",
-  alternates: { canonical: "https://vo2max.in/terms-and-conditions" },
+  alternates: { canonical: "https://vo2maxclinic.vercel.app/terms-and-conditions" },
   openGraph: {
     title: "Terms & Conditions | VO2 Max Physiotherapy Mysuru",
     description: "Terms and conditions for using the website and services of VO2 Max Physiotherapy in Mysuru.",
-    url: "https://vo2max.in/terms-and-conditions",
+    url: "https://vo2maxclinic.vercel.app/terms-and-conditions",
     type: "website",
   },
 };
@@ -18,8 +18,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2max.in" },
-    { "@type": "ListItem", position: 2, name: "Terms & Conditions", item: "https://vo2max.in/terms-and-conditions" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2maxclinic.vercel.app" },
+    { "@type": "ListItem", position: 2, name: "Terms & Conditions", item: "https://vo2maxclinic.vercel.app/terms-and-conditions" },
   ],
 };
 

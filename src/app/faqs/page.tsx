@@ -4,11 +4,11 @@ import FaqsContent from "./faqs-content";
 export const metadata: Metadata = {
   title: "FAQs | VO2 Max Physiotherapy Mysuru",
   description: "Frequently asked questions about physiotherapy at VO2 Max in Mysuru. Learn about treatments, appointments, and more.",
-  alternates: { canonical: "https://vo2max.in/faqs" },
+  alternates: { canonical: "https://vo2maxclinic.vercel.app/faqs" },
   openGraph: {
     title: "FAQs | VO2 Max Physiotherapy Mysuru",
     description: "Frequently asked questions about physiotherapy at VO2 Max in Mysuru. Learn about treatments, appointments, and more.",
-    url: "https://vo2max.in/faqs",
+    url: "https://vo2maxclinic.vercel.app/faqs",
     type: "website",
   },
 };
@@ -17,8 +17,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2max.in" },
-    { "@type": "ListItem", position: 2, name: "FAQs", item: "https://vo2max.in/faqs" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2maxclinic.vercel.app" },
+    { "@type": "ListItem", position: 2, name: "FAQs", item: "https://vo2maxclinic.vercel.app/faqs" },
   ],
 };
 

@@ -62,8 +62,8 @@ export default function BookAppointmentContent() {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2max.in" },
-              { "@type": "ListItem", position: 2, name: "Book Appointment", item: "https://vo2max.in/book-appointment" },
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2maxclinic.vercel.app" },
+              { "@type": "ListItem", position: 2, name: "Book Appointment", item: "https://vo2maxclinic.vercel.app/book-appointment" },
             ],
           }),
         }}

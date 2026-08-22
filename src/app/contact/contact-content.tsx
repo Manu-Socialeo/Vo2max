@@ -143,7 +143,7 @@ export default function ContactContent() {
             "@context": "https://schema.org",
             "@type": ["MedicalClinic", "LocalBusiness"],
             name: clinic.name,
-            url: "https://vo2max.in",
+            url: "https://vo2maxclinic.vercel.app",
             telephone: clinic.phone,
             email: clinic.email,
             address: {

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { servicesSlugs, doctors } from "@/lib/clinic";
 
-const baseUrl = "https://vo2max.in";
+const baseUrl = "https://vo2maxclinic.vercel.app";
 
 const staticPages = [
   { path: "", priority: 1.0, changeFreq: "weekly" as const },

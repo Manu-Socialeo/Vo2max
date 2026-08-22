@@ -35,7 +35,7 @@ export const clinic: ClinicInfo = {
   linkedin:
     "https://www.linkedin.com/company/vo2-max-physiotherapy-rehabilitation-fitness",
   facebook: "https://www.facebook.com/Vo2MaxPhysiotherapyRehabilitationFitness/",
-  website: "https://vo2max.in",
+  website: "https://vo2maxclinic.vercel.app",
 };
 
 export interface Doctor {

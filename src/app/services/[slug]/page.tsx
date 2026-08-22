@@ -298,8 +298,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description: serviceContent[slug]?.description.slice(0, 160) ?? service.description,
-    alternates: { canonical: `https://vo2max.in/services/${slug}` },
-    openGraph: { title, description: service.description, url: `https://vo2max.in/services/${slug}` },
+    alternates: { canonical: `https://vo2maxclinic.vercel.app/services/${slug}` },
+    openGraph: { title, description: service.description, url: `https://vo2maxclinic.vercel.app/services/${slug}` },
   };
 }
 
@@ -314,9 +314,9 @@ export default async function ServicePage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2max.in" },
-      { "@type": "ListItem", position: 2, name: "Services", item: "https://vo2max.in/services" },
-      { "@type": "ListItem", position: 3, name: service.title, item: `https://vo2max.in/services/${slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2maxclinic.vercel.app" },
+      { "@type": "ListItem", position: 2, name: "Services", item: "https://vo2maxclinic.vercel.app/services" },
+      { "@type": "ListItem", position: 3, name: service.title, item: `https://vo2maxclinic.vercel.app/services/${slug}` },
     ],
   };
 
@@ -325,7 +325,7 @@ export default async function ServicePage({ params }: Props) {
     "@type": "MedicalTherapy",
     name: `${service.title} at VO2 Max Physiotherapy`,
     description: content?.description ?? service.description,
-    url: `https://vo2max.in/services/${slug}`,
+    url: `https://vo2maxclinic.vercel.app/services/${slug}`,
     provider: {
       "@type": "MedicalClinic",
       name: "VO2 Max Physiotherapy Rehabilitation & Fitness Center",

@@ -6,11 +6,11 @@ import { clinic } from "@/lib/clinic";
 export const metadata: Metadata = {
   title: "Cookie Policy | VO2 Max Physiotherapy Mysuru",
   description: "Cookie policy for VO2 Max Physiotherapy Rehabilitation & Fitness Center in Mysuru. Learn about how we use cookies on our website.",
-  alternates: { canonical: "https://vo2max.in/cookie-policy" },
+  alternates: { canonical: "https://vo2maxclinic.vercel.app/cookie-policy" },
   openGraph: {
     title: "Cookie Policy | VO2 Max Physiotherapy Mysuru",
     description: "Cookie policy for VO2 Max Physiotherapy Rehabilitation & Fitness Center in Mysuru. Learn about how we use cookies on our website.",
-    url: "https://vo2max.in/cookie-policy",
+    url: "https://vo2maxclinic.vercel.app/cookie-policy",
     type: "website",
   },
 };
@@ -19,8 +19,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2max.in" },
-    { "@type": "ListItem", position: 2, name: "Cookie Policy", item: "https://vo2max.in/cookie-policy" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2maxclinic.vercel.app" },
+    { "@type": "ListItem", position: 2, name: "Cookie Policy", item: "https://vo2maxclinic.vercel.app/cookie-policy" },
   ],
 };
 

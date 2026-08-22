@@ -4,11 +4,11 @@ import LocationContent from "./location-content";
 export const metadata: Metadata = {
   title: "Location | VO2 Max Physiotherapy Mysuru",
   description: "Visit VO2 Max Physiotherapy in Vijayanagar II Stage, Mysuru. Find directions, landmarks, and clinic timings.",
-  alternates: { canonical: "https://vo2max.in/location" },
+  alternates: { canonical: "https://vo2maxclinic.vercel.app/location" },
   openGraph: {
     title: "Location | VO2 Max Physiotherapy Mysuru",
     description: "Visit VO2 Max Physiotherapy in Vijayanagar II Stage, Mysuru. Find directions, landmarks, and clinic timings.",
-    url: "https://vo2max.in/location",
+    url: "https://vo2maxclinic.vercel.app/location",
     type: "website",
   },
 };
@@ -17,7 +17,7 @@ const medicalClinicSchema = {
   "@context": "https://schema.org",
   "@type": "MedicalClinic",
   name: "VO2 Max Physiotherapy Rehabilitation & Fitness Center",
-  url: "https://vo2max.in",
+  url: "https://vo2maxclinic.vercel.app",
   telephone: "+919480166770",
   email: "pinakinphysio@yahoo.com",
   founder: [
@@ -49,8 +49,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2max.in" },
-    { "@type": "ListItem", position: 2, name: "Location", item: "https://vo2max.in/location" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://vo2maxclinic.vercel.app" },
+    { "@type": "ListItem", position: 2, name: "Location", item: "https://vo2maxclinic.vercel.app/location" },
   ],
 };
 
