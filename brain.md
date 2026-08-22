@@ -11,45 +11,62 @@
 
 This codebase contains **two high-value packages** intentionally archived for client upsells. Any AI assistant or developer can instantly bring them back using the **2-Word Memory Phrases**:
 
-| Feature / Package | 2-Word Trigger Word | Automated Command | Saved Archive Directory |
+| Feature / Package | 2-Word Trigger Phrase | Automated NPM Script | Primary Archive Directory |
 |---|---|---|---|
 | **14 Specialized Service Pages** | **`ACTIVATE SERVICES`** | `npm run activate-services` | [`_archived_services/`](file:///c:/Users/manpr/OneDrive/Documents/Antigravity%20Projects/vo2max/_archived_services) |
 | **14 Health Hub Blog Articles** | **`ACTIVATE BLOGS`** *(or `ACTIVATE HEALTH HUB`)* | `npm run activate-health-hub` | [`_archived_blog/`](file:///c:/Users/manpr/OneDrive/Documents/Antigravity%20Projects/vo2max/_archived_blog) |
 
 ---
 
-## 1. 📂 Specialized Treatment Pages Archive (`_archived_services/`)
+## 🗺️ Master File Map & Archival Registry
 
-### Current State:
-- The main Services overview page **[`/services`](https://vo2maxclinic.vercel.app/services)** is **LIVE and fully functional**.
-- Clicking any service card across the site now routes directly to **"Book Consultation" (`/book-appointment`)** instead of opening a deep individual page.
-- The 14 deep sub-pages (`/services/[slug]`) are removed from active routes and safely preserved in `_archived_services/`.
+### 1. 📂 Archived Service Treatment Pages: `_archived_services/`
+| Source File in Archive | Target Destination on Reactivation | Purpose |
+|---|---|---|
+| `_archived_services/src/app/services/[slug]/page.tsx` | `src/app/services/[slug]/page.tsx` | Next.js template for all 14 clinical treatment pages |
+| `_archived_services/README.md` | Internal documentation | Step-by-step restoration instructions |
+| `scripts/activate-services.mjs` | Executed via `npm run activate-services` | Automated script that restores pages, header dropdown, and sitemap |
 
-### How to Reactivate (Trigger: `ACTIVATE SERVICES`):
-Run:
+---
+
+### 2. 📚 Archived Health Hub & Blogs: `_archived_blog/`
+| Source File in Archive | Target Destination on Reactivation | Purpose |
+|---|---|---|
+| `_archived_blog/src/lib/blog-content.ts` | `src/lib/blog-content.ts` | All 14 researched clinical articles (14,000+ words), author bios, and SEO metadata |
+| `_archived_blog/src/app/blog/page.tsx` | `src/app/blog/page.tsx` | Health Hub directory listing page with category filters & Schema |
+| `_archived_blog/src/app/blog/[slug]/page.tsx` | `src/app/blog/[slug]/page.tsx` | Individual article reader template with FAQ accordion & `BlogPosting` Schema |
+| `_archived_blog/README.md` | Internal documentation | Reactivation guide |
+| `scripts/activate-health-hub.mjs` | Executed via `npm run activate-health-hub` | Automated script that restores routes, navbar button, and sitemap |
+
+---
+
+### 3. 📄 Internal Client Sales Documents: `docs/`
+| File Path | Description |
+|---|---|
+| `docs/CLIENT_SALES_PROPOSAL.md` | Comprehensive proposal with UI/UX breakdown and package tiers |
+| `docs/ITEMIZED_COST_BREAKUP.md` | Exact market-rate line-item billing table |
+
+---
+
+## ⚡ Reactivation Instructions
+
+### To Reactivate the 14 Specialized Treatment Pages:
+Prompt with: **`ACTIVATE SERVICES`**  
+Command:
 ```bash
 npm run activate-services
 ```
-*(Executes `scripts/activate-services.mjs` to restore `src/app/services/[slug]/page.tsx`, header dropdown, deep links, and sitemap entries).*
 
----
-
-## 2. 📚 Health Hub & Blog Articles Archive (`_archived_blog/`)
-
-### Current State:
-- All 14 researched clinical articles (14,000+ words), FAQ schemas, and reader templates are stored in `_archived_blog/`.
-- Hidden from public navigation, sitemap, and active routing.
-
-### How to Reactivate (Trigger: `ACTIVATE BLOGS`):
-Run:
+### To Reactivate the 14 Health Hub Blog Articles:
+Prompt with: **`ACTIVATE BLOGS`**  
+Command:
 ```bash
 npm run activate-health-hub
 ```
-*(Executes `scripts/activate-health-hub.mjs` to restore `src/app/blog/`, header navigation link, and `BlogPosting` sitemap entries).*
 
 ---
 
-## 3. 🌐 Active Website Architecture (19 Pages Total)
+## 🌐 Current Active Architecture (19 Pages Total)
 
 1. **Core Public Pages (9 Pages):**
    - Home (`/`), About (`/about`), Services Directory (`/services`), Specialists (`/team`), Pricing (`/pricing`), Gallery (`/gallery`), Contact (`/contact`), Testimonials (`/testimonials`), FAQs (`/faqs`).
