@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { servicesSlugs, doctors } from "@/lib/clinic";
+import { doctors } from "@/lib/clinic";
 
 const baseUrl = "https://vo2maxclinic.vercel.app";
 
@@ -30,15 +30,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: p.changeFreq,
     priority: p.priority,
   }));
-
-  for (const slug of servicesSlugs) {
-    entries.push({
-      url: `${baseUrl}/services/${slug}`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    });
-  }
 
   for (const doctor of doctors) {
     entries.push({

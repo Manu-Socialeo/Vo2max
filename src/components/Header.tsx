@@ -6,21 +6,21 @@ import { useState } from "react";
 import { Menu, X, Phone, ChevronDown, Calendar, Activity } from "lucide-react";
 import { clinic } from "@/lib/clinic";
 
-const navLinks = [
+interface DropdownItem {
+  href: string;
+  label: string;
+}
+
+interface NavLinkItem {
+  href: string;
+  label: string;
+  dropdown?: DropdownItem[];
+}
+
+const navLinks: NavLinkItem[] = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
-  {
-    href: "/services",
-    label: "Services",
-    dropdown: [
-      { href: "/services/physiotherapy", label: "Manual Physiotherapy" },
-      { href: "/services/sports-rehabilitation", label: "Sports Rehabilitation" },
-      { href: "/services/post-surgical-rehabilitation", label: "Post-Surgical Care" },
-      { href: "/services/cardiac-rehabilitation", label: "Cardiac Rehabilitation" },
-      { href: "/services/neurology-rehabilitation", label: "Neuro Rehabilitation" },
-      { href: "/services/exercise-therapy", label: "Exercise & Functional Therapy" },
-    ],
-  },
+  { href: "/services", label: "Services" },
   { href: "/team", label: "Specialists" },
   { href: "/pricing", label: "Pricing" },
   { href: "/gallery", label: "Gallery" },

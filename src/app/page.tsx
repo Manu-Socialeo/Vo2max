@@ -354,9 +354,8 @@ export default function Home() {
             {clinicalServices.map((service) => {
               const Icon = service.icon;
               return (
-                <Link
+                <div
                   key={service.id}
-                  href={`/services/${service.id}`}
                   className="group relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-8 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/10"
                 >
                   <div>
@@ -377,11 +376,16 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <div className="mt-6 flex items-center gap-1.5 text-xs font-bold text-[#0052FF] pt-4 border-t border-slate-100">
-                    <span>Clinical protocol details</span>
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                  <div className="mt-6 pt-4 border-t border-slate-100">
+                    <Link
+                      href="/book-appointment"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0052FF] transition-colors hover:text-[#0042D1]"
+                    >
+                      <span>Book Consultation</span>
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                    </Link>
                   </div>
-                </Link>
+                </div>
               );
             })}
           </div>

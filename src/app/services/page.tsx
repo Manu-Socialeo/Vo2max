@@ -34,7 +34,7 @@ const itemListSchema = {
     "@type": "ListItem",
     position: i + 1,
     name: s.title,
-    url: `https://vo2maxclinic.vercel.app/services/${s.id}`,
+    url: `https://vo2maxclinic.vercel.app/services`,
   })),
 };
 
@@ -68,25 +68,28 @@ export default function ServicesPage() {
             {services.map((service) => {
               const Icon = iconMap[service.icon] || Stethoscope;
               return (
-                <Link key={service.id} href={`/services/${service.id}`} className="group block">
-                  <div className="flex h-full flex-col justify-between rounded-3xl border border-slate-200 bg-white p-8 shadow-xs transition-all duration-300 hover:shadow-xl hover:border-blue-200 hover:-translate-y-1">
-                    <div>
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-[#0052FF] transition-colors group-hover:bg-[#0052FF] group-hover:text-white">
-                        <Icon className="h-6 w-6" />
-                      </div>
-                      <h3 className="mt-6 text-lg font-bold text-slate-900 group-hover:text-[#0052FF] transition-colors">
-                        {service.title}
-                      </h3>
-                      <p className="mt-2.5 text-xs leading-relaxed text-slate-600">
-                        {service.description}
-                      </p>
+                <div key={service.id} className="group flex h-full flex-col justify-between rounded-3xl border border-slate-200 bg-white p-8 shadow-xs transition-all duration-300 hover:shadow-xl hover:border-blue-200 hover:-translate-y-1">
+                  <div>
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-[#0052FF] transition-colors group-hover:bg-[#0052FF] group-hover:text-white">
+                      <Icon className="h-6 w-6" />
                     </div>
-                    <div className="mt-6 flex items-center gap-1.5 text-xs font-bold text-[#0052FF] pt-4 border-t border-slate-100">
-                      <span>View clinical protocol</span>
-                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                    </div>
+                    <h3 className="mt-6 text-lg font-bold text-slate-900 group-hover:text-[#0052FF] transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="mt-2.5 text-xs leading-relaxed text-slate-600">
+                      {service.description}
+                    </p>
                   </div>
-                </Link>
+                  <div className="mt-6 pt-4 border-t border-slate-100">
+                    <Link
+                      href="/book-appointment"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0052FF] transition-colors hover:text-[#0042D1]"
+                    >
+                      <span>Book Consultation</span>
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </div>
+                </div>
               );
             })}
           </div>

@@ -33,7 +33,8 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "check": "npm run lint && npm run typecheck && npm run build",
-    "activate-health-hub": "node scripts/activate-health-hub.mjs"
+    "activate-health-hub": "node scripts/activate-health-hub.mjs",
+    "activate-services": "node scripts/activate-services.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.3.0",
