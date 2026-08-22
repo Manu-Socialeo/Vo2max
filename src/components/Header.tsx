@@ -24,7 +24,6 @@ const navLinks = [
   { href: "/team", label: "Specialists" },
   { href: "/pricing", label: "Pricing" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/blog", label: "Health Hub" },
   { href: "/contact", label: "Contact" },
 ];
 

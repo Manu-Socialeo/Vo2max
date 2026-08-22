@@ -359,9 +359,6 @@ export default async function ServicePage({ params }: Props) {
             <span className="section-subtitle">Clinical Overview</span>
             <h2 className="mt-4 text-slate-900">About this treatment</h2>
             <p className="mt-6 text-sm leading-relaxed text-slate-600 sm:text-base">{content?.description}</p>
-            <div className="mt-4">
-              <Link href={"/blog/" + slug} className="text-xs font-bold text-[#0052FF] hover:underline">Read our clinical guide on {service.title} &rarr;</Link>
-            </div>
           </div>
         </div>
       </section>

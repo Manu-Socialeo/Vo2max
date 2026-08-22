@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
 import { servicesSlugs, doctors } from "@/lib/clinic";
-import { blogPosts } from "@/lib/blog-content";
 
 const baseUrl = "https://vo2max.in";
 
@@ -10,7 +9,6 @@ const staticPages = [
   { path: "services", priority: 0.9, changeFreq: "weekly" as const },
   { path: "team", priority: 0.8, changeFreq: "monthly" as const },
   { path: "pricing", priority: 0.7, changeFreq: "monthly" as const },
-  { path: "blog", priority: 0.8, changeFreq: "weekly" as const },
   { path: "testimonials", priority: 0.6, changeFreq: "monthly" as const },
   { path: "gallery", priority: 0.5, changeFreq: "monthly" as const },
   { path: "faqs", priority: 0.6, changeFreq: "monthly" as const },
@@ -46,15 +44,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entries.push({
       url: `${baseUrl}/team/${doctor.id}`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    });
-  }
-
-  for (const post of blogPosts) {
-    entries.push({
-      url: `${baseUrl}/blog/${post.id}`,
-      lastModified: new Date(post.date),
       changeFrequency: "monthly",
       priority: 0.7,
     });
